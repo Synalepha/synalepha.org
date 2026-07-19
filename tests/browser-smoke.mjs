@@ -246,6 +246,22 @@ try {
     check(deepLinks.at(-1).title === title && deepLinks.at(-1).reviewVisible && deepLinks.at(-1).status.includes('exemplar loaded'), `Direct exemplar query did not load ${id} into review`);
   }
 
+  await cdp.send('Page.navigate', {url: `http://127.0.0.1:${serverPort}/tools.html`});
+  await waitForReady(cdp);
+  const toolDirectory = await cdp.evaluate(`({current: document.querySelector('nav [aria-current="page"]')?.textContent, destinations: [...document.querySelectorAll('.tool-directory a')].map(link => new URL(link.href).pathname)})`);
+  check(toolDirectory.current === 'Tools', 'Tools directory does not expose the correct navigation context');
+  for (const route of ['/create.html', '/resources.html', '/assess.html']) check(toolDirectory.destinations.includes(route), `Tools directory is missing ${route}`);
+  await cdp.send('Emulation.setDeviceMetricsOverride', {width: 320, height: 800, deviceScaleFactor: 1, mobile: true});
+  const toolMobile = await cdp.evaluate(`({pageWidth: document.documentElement.scrollWidth, viewport: innerWidth})`);
+  check(toolMobile.viewport === 320 && toolMobile.pageWidth <= 320, `Tools directory overflows the 320px viewport (${toolMobile.pageWidth}px)`);
+  await cdp.send('Emulation.clearDeviceMetricsOverride');
+
+  await cdp.send('Page.navigate', {url: `http://127.0.0.1:${serverPort}/languages.html`});
+  await waitForReady(cdp);
+  const languageDirectory = await cdp.evaluate(`({current: document.querySelector('nav [aria-current="page"]')?.textContent, spanish: Boolean(document.querySelector('a[href="spanish.html"]')), french: Boolean(document.querySelector('a[href="french.html"]')), links: [...document.querySelectorAll('.language-directory a')].map(link => link.href)})`);
+  check(languageDirectory.current === 'Languages' && languageDirectory.spanish && languageDirectory.french, 'Languages directory is incomplete or lacks navigation context');
+  check(languageDirectory.links.some(url => url.includes('language=Spanish')) && languageDirectory.links.some(url => url.includes('language=French')), 'Language directory does not expose both filtered resource paths');
+
   await cdp.send('Page.navigate', {url: `http://127.0.0.1:${serverPort}/resources.html`});
   await waitForReady(cdp);
   const resourceAction = await cdp.evaluate(`(() => { const link = document.querySelector('.resource-actions .button'); return {label: link.textContent, href: link.href}; })()`);

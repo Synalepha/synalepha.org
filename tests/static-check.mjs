@@ -31,6 +31,8 @@ const home = await readFile(path.join(root, 'index.html'), 'utf8');
 const spanish = await readFile(path.join(root, 'spanish.html'), 'utf8');
 const french = await readFile(path.join(root, 'french.html'), 'utf8');
 const assess = await readFile(path.join(root, 'assess.html'), 'utf8');
+const toolDirectory = await readFile(path.join(root, 'tools.html'), 'utf8');
+const languageDirectory = await readFile(path.join(root, 'languages.html'), 'utf8');
 const assessment = await readFile(path.join(root, 'assessment.js'), 'utf8');
 const headers = await readFile(path.join(root, '_headers'), 'utf8');
 
@@ -65,7 +67,12 @@ check(/connect-src 'self'/.test(headers), 'CSP must allow only the same-origin a
 for (const file of htmlFiles) {
   const html = await readFile(path.join(root, file), 'utf8');
   check(html.includes('assess.html'), `${file}: navigation or content does not expose Assessment Review`);
+  check(html.includes('tools.html') && html.includes('languages.html'), `${file}: global navigation must expose Tools and Languages directories`);
 }
+for (const href of ['create.html', 'resources.html', 'assess.html']) check(toolDirectory.includes(`href="${href}"`), `Tools directory is missing ${href}`);
+for (const href of ['spanish.html', 'french.html', 'resources.html?language=Spanish', 'resources.html?language=French']) check(languageDirectory.includes(`href="${href}"`), `Languages directory is missing ${href}`);
+check(/Spanish tools/.test(spanish) && /create\.html\?exemplar=ex-spanish-novice/.test(spanish) && /resources\.html\?language=Spanish/.test(spanish), 'Spanish hub must organize entry points by tool');
+check(/French tools/.test(french) && /create\.html\?exemplar=ex-french-novice/.test(french) && /resources\.html\?language=French/.test(french), 'French hub must organize entry points by tool');
 
 if (failures.length) {
   console.error(failures.map(failure => `FAIL: ${failure}`).join('\n'));

@@ -2,6 +2,8 @@
 
 A dependency-light Spanish and French teacher hub. Lesson Studio connects context and outcome, source metadata, meaning-focused input, communication, evidence, an editable rubric, feedback, and reassessment. Assessment Review sends a lesson plus one de-identified plain-text response to a same-origin Cloudflare Pages Function for transparent, deterministic evidence indicators and an editable feedback draft.
 
+The global information architecture has two primary directories: `tools.html` groups Lesson Studio, Resource Finder, and Assessment Review by teacher task; `languages.html` groups Spanish and French hubs, exemplars, and filtered resources by language. Existing tool and language URLs remain stable.
+
 ## Privacy and architecture
 
 - No account, server database, analytics, advertising, external AI call, or API key.
