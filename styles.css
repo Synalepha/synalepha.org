@@ -37,7 +37,7 @@ button { touch-action: manipulation; }
 header { background: rgba(255, 253, 248, .98); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
 .nav-wrap { max-width: var(--max); margin: auto; min-height: 4.7rem; padding: .7rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .brand { display: flex; align-items: center; gap: .65rem; color: var(--ink); font-weight: 800; text-decoration: none; letter-spacing: -.02em; }
-.mark { width: 2rem; height: 2rem; border: 2px solid var(--teal); border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); color: var(--coral); font-size: 1.3rem; }
+.mark { width: 2.35rem; height: 2.35rem; display: block; flex: 0 0 auto; border-radius: .48rem; }
 .nav-toggle { display: none; border: 1px solid var(--line); background: var(--paper); border-radius: .5rem; padding: .55rem .7rem; color: var(--ink); }
 nav ul { display: flex; gap: .2rem; list-style: none; margin: 0; padding: 0; }
 nav a { color: var(--muted); text-decoration: none; font-size: .92rem; font-weight: 650; padding: .55rem .7rem; border-radius: .45rem; }

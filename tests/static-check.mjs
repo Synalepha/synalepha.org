@@ -35,6 +35,16 @@ const toolDirectory = await readFile(path.join(root, 'tools.html'), 'utf8');
 const languageDirectory = await readFile(path.join(root, 'languages.html'), 'utf8');
 const assessment = await readFile(path.join(root, 'assessment.js'), 'utf8');
 const headers = await readFile(path.join(root, '_headers'), 'utf8');
+const logo = await readFile(path.join(root, 'logo-mark.svg'), 'utf8');
+const favicon = await readFile(path.join(root, 'favicon.svg'), 'utf8');
+
+for (const file of htmlFiles) {
+  const html = await readFile(path.join(root, file), 'utf8');
+  check((html.match(/<img class="mark" src="logo-mark\.svg" alt="" width="40" height="40">/g) || []).length === 2, `${file}: header and footer must use the accessible brand logograph`);
+  check(!/<span class="mark"[^>]*>S<\/span>/.test(html), `${file}: obsolete letter placeholder remains`);
+}
+check(/#174e4a/.test(logo) && /#c95340/.test(logo), 'Brand logograph must retain the approved teal and coral joining strokes');
+check(/M25 27l18 23/.test(logo) && /M25 27l18 23/.test(favicon), 'Site mark and favicon must use the same alphabetic-synergy construction');
 
 check((create.match(/data-step-panel=/g) || []).length === 6, 'Lesson Studio must have six workflow panels');
 check(/Import JSON/.test(create) && /Export JSON/.test(create), 'Lesson Studio needs JSON import and export controls');

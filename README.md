@@ -4,6 +4,8 @@ A dependency-light Spanish and French teacher hub. Lesson Studio connects contex
 
 The global information architecture has two primary directories: `tools.html` groups Lesson Studio, Resource Finder, and Assessment Review by teacher task; `languages.html` groups Spanish and French hubs, exemplars, and filtered resources by language. Existing tool and language URLs remain stable.
 
+The brand uses `logo-mark.svg`, a standalone S/letter-joining logograph, in every header and footer. `favicon.svg` uses the same geometry so the identity remains consistent at browser-tab size.
+
 ## Privacy and architecture
 
 - No account, server database, analytics, advertising, external AI call, or API key.
