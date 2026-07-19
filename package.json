@@ -1,0 +1,8 @@
+{
+  "name": "synalepha-language-hub",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --check site.js && node --check tools.js && node --check resources.js && node --check assessment.js && node tests/static-check.mjs && node tests/backend-check.mjs && node tests/browser-smoke.mjs && node tests/assessment-browser.mjs"
+  }
+}

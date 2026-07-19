@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Synalepha Lesson Studio | Build a coherent language lesson</title>
+  <meta name="description" content="Build, review, save, remix, import, and export a coherent Spanish or French lesson privately in your browser.">
+  <link rel="canonical" href="https://synalepha.org/create.html">
+  <meta property="og:title" content="Synalepha Lesson Studio">
+  <meta property="og:description" content="One guided, private workflow from outcome and authentic source to communication, evidence, and export.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://synalepha.org/create.html">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+  <script src="tools.js" defer></script>
+</head>
+<body class="studio-page">
+<a class="skip-link" href="#studio-main">Skip to Lesson Studio</a>
+<header><div class="nav-wrap"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">S</span>Synalepha</a><button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav id="primary-nav" aria-label="Primary"><ul><li><a href="index.html">Home</a></li><li><a aria-current="page" href="create.html">Lesson Studio</a></li><li><a href="assess.html">Assessment</a></li><li><a href="resources.html">Resources</a></li><li><a href="spanish.html">Spanish</a></li><li><a href="french.html">French</a></li><li><a href="pedagogy.html">Pedagogy</a></li><li><a href="about.html">About</a></li></ul></nav></div></header>
+
+<main id="studio-main">
+  <section class="studio-intro wrap">
+    <div>
+      <div class="eyebrow">Private, local lesson planning</div>
+      <h1>Synalepha Lesson Studio</h1>
+      <p>Build one connected lesson from purpose to evidence. No account, AI call, analytics, or network request is used by the Studio.</p>
+    </div>
+    <div class="studio-file-actions no-print" role="group" aria-label="Lesson file actions">
+      <button class="button secondary" id="new-lesson" type="button">New</button>
+      <button class="button secondary" id="save-lesson" type="button">Save locally</button>
+      <button class="button secondary" id="duplicate-lesson" type="button">Duplicate / remix</button>
+      <button class="button secondary" id="export-json" type="button">Export JSON</button>
+      <label class="button secondary file-button" for="import-json">Import JSON</label>
+      <input class="visually-hidden" id="import-json" type="file" accept="application/json,.json">
+    </div>
+    <p class="privacy-note">Saved lessons stay in this browser profile. JSON files and printed PDFs are created on this device. Do not enter sensitive student information.</p>
+    <p id="global-status" class="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="exemplar-strip no-print" aria-labelledby="exemplar-title">
+    <div class="wrap">
+      <div class="section-heading-row"><div><div class="eyebrow">Start from a complete model</div><h2 id="exemplar-title">Load and remix an exemplar</h2></div><button class="text-button" type="button" id="toggle-exemplars" aria-expanded="false" aria-controls="exemplar-list">Show exemplars</button></div>
+      <div id="exemplar-list" class="exemplar-grid" hidden></div>
+    </div>
+  </section>
+
+  <section class="studio-shell wrap">
+    <nav class="step-nav no-print" aria-label="Lesson Studio steps">
+      <ol>
+        <li><button type="button" data-step="0" aria-current="step"><span>1</span>Purpose</button></li>
+        <li><button type="button" data-step="1"><span>2</span>Source</button></li>
+        <li><button type="button" data-step="2"><span>3</span>Input</button></li>
+        <li><button type="button" data-step="3"><span>4</span>Communication</button></li>
+        <li><button type="button" data-step="4"><span>5</span>Evidence</button></li>
+        <li><button type="button" data-step="5"><span>6</span>Review</button></li>
+      </ol>
+      <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+      <p id="step-summary" class="meta">Step 1 of 6</p>
+    </nav>
+
+    <div class="studio-layout">
+      <form id="lesson-form" class="studio-form" novalidate>
+        <section class="studio-step" data-step-panel="0" aria-labelledby="step-purpose-title">
+          <div class="step-heading"><div><span class="kicker">Step 1 of 6</span><h2 id="step-purpose-title" tabindex="-1">Context and outcome</h2><p>Define what learners will use language to accomplish, for whom, and in what context.</p></div></div>
+          <div class="field"><label for="lesson-title">Lesson title *</label><input id="lesson-title" name="title" type="text" required maxlength="120" autocomplete="off"><p class="hint">A short, teacher-facing name.</p></div>
+          <div class="field-row"><div class="field"><label for="language">Language *</label><select id="language" name="language" required><option value="">Choose</option><option>Spanish</option><option>French</option></select></div><div class="field"><label for="proficiency">Learner range *</label><select id="proficiency" name="proficiency" required><option value="">Choose</option><option>Novice</option><option>Intermediate</option></select></div></div>
+          <div class="field-row"><div class="field"><label for="learners">Learner context *</label><input id="learners" name="learners" type="text" required maxlength="180" placeholder="e.g., Novice Mid, grade 8; familiar with weather terms"></div><div class="field"><label for="duration">Time available</label><input id="duration" name="duration" type="text" maxlength="60" placeholder="e.g., 50 minutes"></div></div>
+          <div class="field"><label for="context">Meaningful context *</label><textarea id="context" name="context" required maxlength="1000" placeholder="What situation, question, or choice makes the language worth understanding?"></textarea></div>
+          <div class="field"><label for="outcome">Observable communication outcome *</label><textarea id="outcome" name="outcome" required maxlength="1000" placeholder="Learners will use information from the source to…"></textarea><p class="hint">Name what learners will communicate, not a grammar point or activity.</p></div>
+        </section>
+
+        <section class="studio-step" data-step-panel="1" aria-labelledby="step-source-title" hidden>
+          <div class="step-heading"><div><span class="kicker">Step 2 of 6</span><h2 id="step-source-title" tabindex="-1">Authentic source or resource</h2><p>Record what the source is, whose context it represents, and how learners can access it.</p></div><a href="resources.html" class="button secondary">Browse resources</a></div>
+          <div class="field"><label for="source-title">Source title or description *</label><input id="source-title" name="sourceTitle" type="text" required maxlength="180" placeholder="Title, episode, menu, listing, forecast…"></div>
+          <div class="field-row"><div class="field"><label for="source-publisher">Creator / publisher *</label><input id="source-publisher" name="sourcePublisher" type="text" required maxlength="180"></div><div class="field"><label for="source-type">Format *</label><select id="source-type" name="sourceType" required><option value="">Choose</option><option>Audio</option><option>Video</option><option>Text</option><option>Image / infographic</option><option>Mixed media</option><option>Teacher-created input</option></select></div></div>
+          <div class="field"><label for="source-url">Source URL</label><input id="source-url" name="sourceUrl" type="url" maxlength="500" inputmode="url" placeholder="https://…"><p class="hint">Optional. Confirm the exact item and availability before teaching.</p></div>
+          <div class="field-row"><div class="field"><label for="source-region">Community / regional context *</label><input id="source-region" name="sourceRegion" type="text" required maxlength="240" placeholder="Who made it, where, and for what audience?"></div><div class="field"><label for="source-date">Source date / currency</label><input id="source-date" name="sourceDate" type="text" maxlength="100" placeholder="Publication date or when checked"></div></div>
+          <div class="field"><label for="source-access">Comprehensibility and accessibility notes *</label><textarea id="source-access" name="sourceAccess" required maxlength="1000" placeholder="Captions/transcript if verified; teacher-provided transcript, alt description, chunking, playback control, print backup…"></textarea><p class="hint">Describe verified features and the access supports you will provide. Do not assume a linked site is accessible.</p></div>
+          <div class="field"><label for="source-license">Access / licensing plan *</label><textarea id="source-license" name="sourceLicense" required maxlength="700" placeholder="State the published license, or say source terms apply and how you will link/project rather than copy."></textarea></div>
+        </section>
+
+        <section class="studio-step" data-step-panel="2" aria-labelledby="step-input-title" hidden>
+          <div class="step-heading"><div><span class="kicker">Step 3 of 6</span><h2 id="step-input-title" tabindex="-1">Interpretive or structured-input task</h2><p>Learners first process messages for meaning. Production of a target form is not required during structured input.</p></div></div>
+          <fieldset><legend>Input pathway *</legend><div class="choice-row"><label><input type="radio" name="inputPathway" value="Interpretive" required> Interpretive task</label><label><input type="radio" name="inputPathway" value="Structured input" required> Structured input</label></div></fieldset>
+          <div class="field"><label for="input-purpose">Reason to understand the source *</label><textarea id="input-purpose" name="inputPurpose" required maxlength="900" placeholder="Learners need the information in order to choose, compare, solve, rank, or decide…"></textarea></div>
+          <div class="field"><label for="input-task">Meaning-focused learner directions *</label><textarea id="input-task" name="inputTask" required maxlength="1800" placeholder="What will learners identify, match, select, sequence, infer, or verify from the message?"></textarea></div>
+          <div class="field"><label for="comprehension-supports">Comprehensibility supports *</label><textarea id="comprehension-supports" name="comprehensionSupports" required maxlength="1200" placeholder="Preview only essential context; add visuals, replay/reading choices, chunking, glossary, transcript or plain-text alternative…"></textarea></div>
+          <details><summary>Structured-input planning (show when relevant)</summary><div class="field"><label for="form-meaning">Form–meaning connection</label><input id="form-meaning" name="formMeaning" type="text" maxlength="240" placeholder="e.g., time reference carried by the verb ending"></div><div class="field"><label for="referential-items">Referential items</label><textarea id="referential-items" name="referentialItems" maxlength="1400" placeholder="Items with an answer grounded in the input; one per line"></textarea></div><div class="field"><label for="affective-items">Affective extension</label><textarea id="affective-items" name="affectiveItems" maxlength="1000" placeholder="Meaning-based personal reactions after referential processing; one per line"></textarea></div></details>
+        </section>
+
+        <section class="studio-step" data-step-panel="3" aria-labelledby="step-communication-title" hidden>
+          <div class="step-heading"><div><span class="kicker">Step 4 of 6</span><h2 id="step-communication-title" tabindex="-1">Communication with a purpose</h2><p>Carry information from the source into interaction, a product, or both.</p></div></div>
+          <div class="field"><label for="communicative-purpose">Audience, purpose, and information need *</label><textarea id="communicative-purpose" name="communicativePurpose" required maxlength="1000" placeholder="Who communicates with whom, why, and what does each person need to learn or decide?"></textarea></div>
+          <div class="field"><label for="interpersonal-task">Interpersonal communication</label><textarea id="interpersonal-task" name="interpersonalTask" maxlength="1500" placeholder="How will learners exchange information, ask follow-up questions, react, clarify, or negotiate?"></textarea></div>
+          <div class="field"><label for="presentational-task">Presentational communication</label><textarea id="presentational-task" name="presentationalTask" maxlength="1500" placeholder="What will learners create for a named audience using information from the source or interaction?"></textarea><p class="hint">Complete at least one communication mode.</p></div>
+          <div class="field"><label for="differentiation">Learner access, support, and extension *</label><textarea id="differentiation" name="differentiation" required maxlength="1600" placeholder="Supports without reducing the outcome; choices of mode, sentence frames, partner roles, processing time, challenge extensions…"></textarea></div>
+        </section>
+
+        <section class="studio-step" data-step-panel="4" aria-labelledby="step-evidence-title" hidden>
+          <div class="step-heading"><div><span class="kicker">Step 5 of 6</span><h2 id="step-evidence-title" tabindex="-1">Evidence, feedback, and reassessment</h2><p>Describe what observable learner work would demonstrate the outcome. Achievement evidence stays separate from behavior or effort.</p></div></div>
+          <div class="field"><label for="evidence-plan">Formative evidence and instructional response *</label><textarea id="evidence-plan" name="evidencePlan" required maxlength="1400" placeholder="What will you collect or notice? What evidence triggers reteaching, more practice, or extension?"></textarea></div>
+          <fieldset class="rubric-editor"><legend>Aligned achievement descriptors *</legend><p class="hint">Edit the evidence prompt and all four descriptors. Describe observable features of this task, not generic quality or effort.</p><div id="rubric-rows"></div><button id="add-criterion" class="button secondary" type="button">Add achievement criterion</button></fieldset>
+          <div class="field"><label for="behavior-note">Behavior / effort (reported separately)</label><textarea id="behavior-note" name="behaviorNote" maxlength="700" placeholder="Optional: participation, preparation, deadlines, collaboration habits. Do not include these in the achievement rubric."></textarea></div>
+          <div class="field-row"><div class="field"><label for="feedback-plan">Feedback plan *</label><textarea id="feedback-plan" name="feedbackPlan" required maxlength="1000" placeholder="How will feedback identify evidence, connect to the outcome, and name a manageable next move?"></textarea></div><div class="field"><label for="reassessment-plan">Revision / reassessment plan *</label><textarea id="reassessment-plan" name="reassessmentPlan" required maxlength="1000" placeholder="What practice or revision comes first, and how can learners provide fresh evidence of the same outcome?"></textarea></div></div>
+        </section>
+
+        <section class="studio-step review-step" data-step-panel="5" aria-labelledby="step-review-title" hidden>
+          <div class="step-heading"><div><span class="kicker">Step 6 of 6</span><h2 id="step-review-title" tabindex="-1">Review and export</h2><p>Resolve or override guidance, then print one coherent lesson artifact.</p></div></div>
+          <div id="review-gate" class="review-gate" role="status"></div>
+          <section id="lesson-artifact" class="lesson-artifact" aria-label="Lesson plan preview"></section>
+          <div class="actions no-print"><button id="print-lesson" type="button">Print / save PDF</button><button id="copy-lesson" class="button secondary" type="button">Copy lesson text</button><button id="review-export-json" class="button secondary" type="button">Export JSON</button></div>
+        </section>
+
+        <button class="visually-hidden" type="submit">Validate lesson form</button>
+        <div class="step-actions no-print"><button class="button secondary" id="previous-step" type="button">Back</button><button id="next-step" type="button">Continue to source</button></div>
+        <p id="form-error" class="error" role="alert"></p>
+      </form>
+
+      <aside class="guidance-panel no-print" aria-labelledby="guidance-title">
+        <div class="guidance-heading"><span class="eyebrow">Transparent planning check</span><h2 id="guidance-title">Studio guidance</h2></div>
+        <p class="hint">Deterministic checks look only for visible fields and plain wording patterns. They cannot judge lesson quality, language accuracy, culture, or your learners.</p>
+        <div id="guidance-list" aria-live="polite"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="saved-section no-print" aria-labelledby="saved-title"><div class="wrap"><div class="section-heading-row"><div><div class="eyebrow">On this device</div><h2 id="saved-title">Saved lessons</h2></div></div><div id="saved-lessons" class="saved-grid"></div></div></section>
+</main>
+
+<template id="rubric-row-template"><fieldset class="rubric-row"><legend>Achievement criterion <span class="criterion-number"></span></legend><button class="remove-criterion text-button" type="button">Remove</button><div class="field"><label>Observable evidence prompt *<input data-rubric="prompt" type="text" required maxlength="300" placeholder="What can a teacher or learner point to in the performance?"></label></div><div class="descriptor-grid"><label>Extends<input data-rubric="extends" type="text" required maxlength="500"></label><label>Meets<input data-rubric="meets" type="text" required maxlength="500"></label><label>Developing<input data-rubric="developing" type="text" required maxlength="500"></label><label>Beginning<input data-rubric="beginning" type="text" required maxlength="500"></label></div></fieldset></template>
+
+<footer><div class="wrap"><div class="footer-grid"><div><a class="brand" href="index.html"><span class="mark" aria-hidden="true">S</span>Synalepha</a><p>Local tools support teacher judgment; they do not replace it.</p></div><div><h3>Make</h3><ul><li><a href="create.html">Lesson Studio</a></li><li><a href="resources.html">Resource finder</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="pedagogy.html">Pedagogy</a></li><li><a href="about.html">About</a></li></ul></div></div><div class="fine">© 2026 Synalepha. Independent teacher resource.</div></div></footer>
+</body>
+</html>

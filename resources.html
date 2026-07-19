@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Spanish &amp; French source finder | Synalepha</title>
+  <meta name="description" content="Find carefully attributed Spanish and French sources, then carry their metadata directly into Synalepha Lesson Studio.">
+  <link rel="canonical" href="https://synalepha.org/resources.html">
+  <meta property="og:title" content="Language source finder | Synalepha">
+  <meta property="og:description" content="Curated, attributed Spanish and French sources that connect directly to Lesson Studio.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://synalepha.org/resources.html">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+  <script src="resources.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><div class="nav-wrap"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">S</span>Synalepha</a><button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav id="primary-nav" aria-label="Primary"><ul><li><a href="index.html">Home</a></li><li><a href="create.html">Lesson Studio</a></li><li><a href="assess.html">Assessment</a></li><li><a aria-current="page" href="resources.html">Resources</a></li><li><a href="spanish.html">Spanish</a></li><li><a href="french.html">French</a></li><li><a href="pedagogy.html">Pedagogy</a></li><li><a href="about.html">About</a></li></ul></nav></div></header>
+<main id="main">
+  <div class="page-head wrap"><div class="eyebrow">Curated source finder</div><h1>Find a source. Build with it.</h1><p>Search 12 established collections and references, then carry source metadata into Lesson Studio with one action. Access and accessibility notes are deliberately conservative; verify the exact item before teaching.</p></div>
+  <section class="section"><div class="wrap">
+    <form class="resource-controls" id="filters">
+      <div class="filter-grid"><div class="field search"><label for="search">Search</label><input type="search" id="search" name="search" placeholder="Topic, source, annotation…"></div><div class="field"><label for="language">Language</label><select id="language" name="language"><option value="">All</option><option>Spanish</option><option>French</option></select></div><div class="field"><label for="level">Level</label><select id="level" name="level"><option value="">All</option><option>Novice</option><option>Intermediate</option><option>Advanced</option><option>All levels</option></select></div><div class="field"><label for="mode">Mode</label><select id="mode" name="mode"><option value="">All</option><option>Interpretive</option><option>Interpersonal</option><option>Presentational</option><option>Reference</option></select></div></div>
+      <div class="filter-grid"><div class="field"><label for="format">Format</label><select id="format" name="format"><option value="">All</option><option>Activities</option><option>Audio</option><option>Video</option><option>Reference</option><option>Mixed media</option></select></div><div class="field"><label for="access">Access / license</label><select id="access" name="access"><option value="">All</option><option>Free access; source terms apply</option><option>Free and paid options</option></select></div><div class="field"><label for="prep">Prep time</label><select id="prep" name="prep"><option value="">All</option><option>Low</option><option>Medium</option></select></div><div class="field"><label for="accessibility">Access support</label><select id="accessibility" name="accessibility"><option value="">All</option><option value="transcript">Transcript / caption support noted</option><option value="text">Primarily text</option><option value="varies">Varies; verify item</option></select></div></div>
+      <button type="submit">Apply filters</button> <button class="button secondary" type="reset">Clear filters</button>
+    </form>
+    <p id="result-count" role="status" aria-live="polite"></p>
+    <div id="resource-list" class="resource-grid"></div>
+    <div id="empty" class="empty" hidden><h2>No close matches</h2><p>Try clearing one or more filters or using a broader search term.</p></div>
+    <noscript><p class="note">JavaScript is required to display and filter the source catalog.</p></noscript>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="footer-grid"><div><a class="brand" href="index.html"><span class="mark" aria-hidden="true">S</span>Synalepha</a><p>Annotations are ours; linked materials remain their publishers’ work.</p></div><div><h3>Make</h3><ul><li><a href="create.html">Lesson Studio</a></li><li><a href="resources.html">Resource finder</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="pedagogy.html">Pedagogy</a></li><li><a href="about.html">About</a></li></ul></div></div><div class="fine">Catalog reviewed July 19, 2026. Verify exact items and source terms; no endorsement implied.</div></div></footer>
+</body>
+</html>

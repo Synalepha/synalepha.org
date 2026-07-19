@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Assessment Review | Synalepha</title>
+  <meta name="description" content="Upload a Synalepha lesson and a plain-text learner response for transparent, teacher-reviewed evidence indicators and feedback prompts.">
+  <link rel="canonical" href="https://synalepha.org/assess.html">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+  <script src="assessment.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><div class="nav-wrap"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">S</span>Synalepha</a><button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav id="primary-nav" aria-label="Primary"><ul><li><a href="index.html">Home</a></li><li><a href="create.html">Lesson Studio</a></li><li><a aria-current="page" href="assess.html">Assessment</a></li><li><a href="resources.html">Resources</a></li><li><a href="spanish.html">Spanish</a></li><li><a href="french.html">French</a></li><li><a href="pedagogy.html">Pedagogy</a></li><li><a href="about.html">About</a></li></ul></nav></div></header>
+<main id="main">
+  <section class="page-head wrap"><div class="eyebrow">Assessment review</div><h1>Inspect evidence without outsourcing judgment.</h1><p>Load a Lesson Studio JSON file, add one plain-text learner response, and receive transparent evidence indicators plus an editable feedback draft.</p></section>
+  <section class="section alt"><div class="wrap assessment-layout">
+    <form id="assessment-form" class="card" novalidate>
+      <h2>1. Load the lesson</h2>
+      <p class="lede">The lesson export supplies the language, outcome, evidence plan, and editable rubric. No student name or identifier is needed.</p>
+      <div class="field"><label for="lesson-file">Synalepha lesson JSON</label><input id="lesson-file" type="file" accept="application/json,.json" required><p id="rubric-summary" class="hint">No rubric loaded.</p></div>
+      <div class="field-row"><div class="field"><label for="assessment-language">Language</label><select id="assessment-language" disabled><option value="">From lesson</option><option>Spanish</option><option>French</option></select></div><div class="field"><label for="assessment-proficiency">Learner range</label><input id="assessment-proficiency" type="text" readonly></div></div>
+      <div class="field"><label for="assessment-outcome">Communication outcome</label><textarea id="assessment-outcome" readonly></textarea></div>
+      <details><summary>Teacher plans carried into analysis</summary><div class="field"><label for="assessment-evidencePlan">Evidence plan</label><textarea id="assessment-evidencePlan" readonly></textarea></div><div class="field"><label for="assessment-feedbackPlan">Feedback plan</label><textarea id="assessment-feedbackPlan" readonly></textarea></div><div class="field"><label for="assessment-reassessmentPlan">Reassessment plan</label><textarea id="assessment-reassessmentPlan" readonly></textarea></div></details>
+      <h2>2. Add one response</h2>
+      <div class="note"><strong>Privacy:</strong> remove names and sensitive information. When you analyze, text is sent to the site’s same-origin function, processed in memory, and returned with <code>no-store</code> headers. Synalepha does not intentionally persist it.</div>
+      <div class="field"><label for="response-file">Plain-text file (optional)</label><input id="response-file" type="file" accept="text/plain,text/markdown,.txt,.md"><p class="hint">Up to 40 KB. PDF, DOCX, image, audio, and video are rejected rather than silently ignored.</p></div>
+      <div class="field"><label for="response-text">Learner response</label><textarea id="response-text" minlength="10" maxlength="40000" required></textarea></div>
+      <button id="analyze-submission" type="submit">Analyze response</button>
+      <p id="assessment-status" class="status" role="status" aria-live="polite"></p>
+    </form>
+    <aside><div class="card"><h2>What this can do</h2><ul><li>Count visible evidence</li><li>Check direct outcome and rubric wording overlap</li><li>Flag language and evidence signals for inspection</li><li>Draft feedback that remains editable</li></ul><h2>What it cannot do</h2><ul><li>Assign a defensible grade</li><li>Verify accuracy, meaning, originality, proficiency, or culture</li><li>Process handwriting, audio, images, PDFs, or word-processing files</li><li>Replace teacher review</li></ul></div></aside>
+  </div></section>
+  <section class="section"><div id="assessment-results" class="wrap assessment-results" hidden aria-live="polite"></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-grid"><div><a class="brand" href="index.html"><span class="mark" aria-hidden="true">S</span>Synalepha</a><p>Useful materials start with purposeful language use.</p></div><div><h3>Make</h3><ul><li><a href="create.html">Lesson Studio</a></li><li><a href="assess.html">Assessment review</a></li><li><a href="resources.html">Resource finder</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="pedagogy.html">Pedagogy</a></li><li><a href="about.html">About</a></li></ul></div></div><div class="fine">© 2026 Synalepha. Independent teacher resource; no listed organization endorses this site.</div></div></footer>
+</body>
+</html>
