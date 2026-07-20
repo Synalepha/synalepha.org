@@ -13,7 +13,7 @@ The brand uses `logo-mark.svg`, a standalone S/letter-joining logograph, in ever
 - Portable JSON export/import uses the versioned `synalepha.lesson` schema. Imports are size-limited, type-checked, enum-checked, and applied only after validation.
 - User and imported content is escaped before preview rendering. Source links are restricted to HTTP(S).
 - Assessment Review accepts lesson JSON plus `.txt`/`.md` learner work, rejects unsupported formats, limits request size, processes requests in memory, and returns `Cache-Control: no-store`. The application does not intentionally persist submissions.
-- The site Content Security Policy permits only same-origin connections so the assessment client can reach `/api/assess`.
+- The site Content Security Policy permits only same-origin connections so the assessment client can reach `/api/assess`. Static CSS and JavaScript use short revalidating cache windows; SVG brand assets use a one-day revalidating window.
 
 Do not enter sensitive student information. Local browser data, JSON files, clipboard contents, printed pages, and PDFs remain under the device user’s control.
 
