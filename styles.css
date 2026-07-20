@@ -310,6 +310,11 @@ footer a { color: #fff; }
   .artifact-meta dt { margin-top: .35rem; }
   .choice-row { display: grid; }
   .lesson-artifact { padding: .8rem; }
+  .step-nav { overflow: visible; }
+  .step-nav ol { min-width: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
+  .step-nav button { min-height: 3.6rem; padding: .35rem .15rem; font-size: .7rem; }
+  .step-nav button span { margin-bottom: .1rem; }
+  .step-nav .meta { position: static; }
 }
 
 @media (max-width: 380px) {
