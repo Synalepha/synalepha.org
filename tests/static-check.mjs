@@ -13,6 +13,7 @@ for (const file of htmlFiles) {
   check(/<!DOCTYPE html>/i.test(html), `${file}: missing HTML doctype`);
   check(/<html\b[^>]*lang="en"/i.test(html), `${file}: missing document language`);
   check(/<meta\s+name="viewport"/i.test(html), `${file}: missing viewport metadata`);
+  check(/<meta\s+name="theme-color"\s+content="#18302d">/i.test(html), `${file}: missing brand browser theme color`);
   check(/class="skip-link"/.test(html), `${file}: missing skip link`);
   check(/<main\b[^>]*id=/.test(html), `${file}: main landmark needs an id`);
   check(!/on(?:click|change|input|load)=/i.test(html), `${file}: inline event handler violates CSP`);
