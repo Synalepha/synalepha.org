@@ -234,6 +234,7 @@ details[open] summary { margin-inline: -1rem; margin-bottom: 1rem; border-bottom
 .finder-prompt h2 { font-size: clamp(1.55rem, 3vw, 2.25rem); margin: .2rem 0 0; }
 .finder-prompt p { color: var(--muted); margin: 0; max-width: 46rem; }
 .filter-grid { display: grid; grid-template-columns: 2fr repeat(3, minmax(0, 1fr)); gap: .7rem; }
+.filter-actions { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; padding-top: .2rem; }
 .resource-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .resource-card { display: flex; flex-direction: column; }
 .resource-card h2 { font: 1.35rem var(--serif); margin: .3rem 0; }
