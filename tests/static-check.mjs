@@ -40,7 +40,7 @@ const favicon = await readFile(path.join(root, 'favicon.svg'), 'utf8');
 
 for (const file of htmlFiles) {
   const html = await readFile(path.join(root, file), 'utf8');
-  check((html.match(/<img class="mark" src="logo-mark\.svg" alt="" width="40" height="40">/g) || []).length === 2, `${file}: header and footer must use the accessible brand logograph`);
+  check((html.match(/<img\s+class="mark"\s+src="logo-mark\.svg"\s+alt=""\s+width="40"\s+height="40"\s*>/g) || []).length === 2, `${file}: header and footer must use the accessible brand logograph`);
   check(!/<span class="mark"[^>]*>S<\/span>/.test(html), `${file}: obsolete letter placeholder remains`);
 }
 check(/#174e4a/.test(logo) && /#c95340/.test(logo), 'Brand logograph must retain the approved teal and coral joining strokes');
