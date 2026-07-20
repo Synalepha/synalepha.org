@@ -28,7 +28,7 @@
       <div class="note"><strong>Privacy:</strong> remove names and sensitive information. When you analyze, text is sent to the site’s same-origin function, processed in memory, and returned with <code>no-store</code> headers. Synalepha does not intentionally persist it.</div>
       <div class="field"><label for="response-file">Plain-text file (optional)</label><input id="response-file" type="file" accept="text/plain,text/markdown,.txt,.md"><p class="hint">Up to 40 KB. PDF, DOCX, image, audio, and video are rejected rather than silently ignored.</p></div>
       <div class="field"><label for="response-text">Learner response</label><textarea id="response-text" minlength="10" maxlength="40000" required></textarea></div>
-      <label class="privacy-check" for="deidentified"><input id="deidentified" type="checkbox"> Before analyzing, pause and confirm: names, IDs, contact details, and other identifying information have been removed.</label>
+      <label class="privacy-check"><input type="checkbox"> Before analyzing, pause and confirm: names, IDs, contact details, and other identifying information have been removed.</label>
       <button id="analyze-submission" type="submit">Analyze response</button>
       <p id="assessment-status" class="status" role="status" aria-live="polite"></p>
     </form>

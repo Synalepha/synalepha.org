@@ -326,6 +326,13 @@ footer a { color: #fff; }
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
 
+@media (prefers-contrast: more) {
+  :root { --line: #71817c; --muted: #314a45; }
+  .card, .studio-form, .guidance-panel, .resource-controls { border-width: 2px; }
+  a { text-decoration-thickness: 2px; }
+  :focus-visible { outline-color: #b93220; outline-width: 4px; }
+}
+
 @media print {
   @page { margin: .55in; }
   header, footer, .no-print, .saved-section, .exemplar-strip, .guidance-panel, .step-actions, #form-error, .review-gate { display: none !important; }
