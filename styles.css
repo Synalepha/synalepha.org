@@ -321,6 +321,8 @@ footer a { color: #fff; }
   .artifact-meta dt { margin-top: .35rem; }
   .choice-row { display: grid; }
   .lesson-artifact { padding: .8rem; }
+  .page-head .actions .button, .hero .actions .button, .filter-actions > * { width: 100%; }
+  .page-head .actions, .hero .actions, .filter-actions { align-items: stretch; }
   .step-nav { overflow: visible; }
   .step-nav ol { min-width: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
   .step-nav button { min-height: 3.6rem; padding: .35rem .15rem; font-size: .7rem; }
