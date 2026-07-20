@@ -212,6 +212,9 @@ details[open] summary { margin-inline: -1rem; margin-bottom: 1rem; border-bottom
 
 /* Resource finder */
 .resource-controls { background: var(--paper); border: 1px solid var(--line); padding: 1rem; border-radius: var(--radius); margin-bottom: 1.5rem; }
+.finder-prompt { display: grid; grid-template-columns: minmax(14rem, .55fr) 1fr; gap: 1rem 2rem; align-items: end; margin-bottom: 1.25rem; }
+.finder-prompt h2 { font-size: clamp(1.55rem, 3vw, 2.25rem); margin: .2rem 0 0; }
+.finder-prompt p { color: var(--muted); margin: 0; max-width: 46rem; }
 .filter-grid { display: grid; grid-template-columns: 2fr repeat(3, minmax(0, 1fr)); gap: .7rem; }
 .resource-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .resource-card { display: flex; flex-direction: column; }
@@ -256,6 +259,7 @@ footer a { color: #fff; }
 }
 
 @media (max-width: 760px) {
+  .finder-prompt { grid-template-columns: 1fr; align-items: start; }
   .nav-toggle { display: block; }
   #primary-nav { position: absolute; inset: 4.7rem 0 auto; background: var(--paper); border-bottom: 1px solid var(--line); padding: .5rem 1rem; }
   #primary-nav[hidden] { display: none !important; }
