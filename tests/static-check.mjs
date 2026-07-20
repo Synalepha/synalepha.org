@@ -44,7 +44,7 @@ for (const file of htmlFiles) {
   check(!/<span class="mark"[^>]*>S<\/span>/.test(html), `${file}: obsolete letter placeholder remains`);
 }
 check(/#174e4a/.test(logo) && /#c95340/.test(logo), 'Brand logograph must retain the approved teal and coral joining strokes');
-check(/M25 27l18 23/.test(logo) && /M25 27l18 23/.test(favicon), 'Site mark and favicon must use the same alphabetic-synergy construction');
+check(/M211 225l121 151/.test(logo) && /M211 225l121 151/.test(favicon), 'Site mark and favicon must use the same alphabetic-synergy construction');
 
 check((create.match(/data-step-panel=/g) || []).length === 6, 'Lesson Studio must have six workflow panels');
 check(/Import JSON/.test(create) && /Export JSON/.test(create), 'Lesson Studio needs JSON import and export controls');

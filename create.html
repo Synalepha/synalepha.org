@@ -28,11 +28,13 @@
     </div>
     <div class="studio-file-actions no-print" role="group" aria-label="Lesson file actions">
       <button class="button secondary" id="new-lesson" type="button">New</button>
-      <button class="button secondary" id="save-lesson" type="button">Save locally</button>
-      <button class="button secondary" id="duplicate-lesson" type="button">Duplicate / remix</button>
-      <button class="button secondary" id="export-json" type="button">Export JSON</button>
-      <label class="button secondary file-button" for="import-json">Import JSON</label>
-      <input class="visually-hidden" id="import-json" type="file" accept="application/json,.json">
+      <button class="button" id="save-lesson" type="button">Save locally</button>
+      <details class="file-more"><summary>More lesson actions</summary><div>
+        <button class="button secondary" id="duplicate-lesson" type="button">Duplicate / remix</button>
+        <button class="button secondary" id="export-json" type="button">Export JSON</button>
+        <label class="button secondary file-button" for="import-json">Import JSON</label>
+        <input class="visually-hidden" id="import-json" type="file" accept="application/json,.json">
+      </div></details>
     </div>
     <p class="privacy-note">Saved lessons stay in this browser profile. JSON files and printed PDFs are created on this device. Do not enter sensitive student information.</p>
     <p id="global-status" class="status" role="status" aria-live="polite"></p>
