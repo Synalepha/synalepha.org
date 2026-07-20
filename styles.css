@@ -240,6 +240,8 @@ details[open] summary { margin-inline: -1rem; margin-bottom: 1rem; border-bottom
 .assessment-metrics dt { grid-row: 1; background: var(--wash); font-weight: 750; }
 .assessment-metrics dd { grid-row: 2; font: 1.4rem var(--serif); }
 .assessment-result-section { margin-top: 2rem; }
+.privacy-check { display: flex; align-items: flex-start; gap: .6rem; margin: 1rem 0; padding: .8rem; background: var(--warning-wash); border: 1px solid #d29d46; border-radius: .5rem; }
+.privacy-check input { margin-top: .3rem; flex: 0 0 auto; }
 .criterion-result { border: 1px solid var(--line); border-left: 5px solid var(--warning); border-radius: .65rem; padding: 1rem; margin: .7rem 0; background: var(--paper); }
 .criterion-result.evidence-found { border-left-color: var(--success); }
 .criterion-result h4 { margin-top: 0; }
