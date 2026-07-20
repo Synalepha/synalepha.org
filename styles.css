@@ -118,6 +118,9 @@ h4 { margin-bottom: .35rem; }
 label, legend { display: block; font-weight: 750; margin-bottom: .35rem; }
 input, select, textarea { width: 100%; border: 1px solid #899b95; border-radius: .42rem; background: #fff; color: var(--ink); padding: .68rem .72rem; }
 input[type="radio"], input[type="checkbox"] { width: auto; accent-color: var(--teal-dark); }
+input[type="file"] { padding: .45rem; background: var(--paper); border-style: dashed; }
+input[type="file"]::file-selector-button { min-height: 2.4rem; margin-right: .7rem; border: 0; border-radius: .35rem; padding: .45rem .7rem; background: var(--wash); color: var(--teal-dark); font-weight: 750; cursor: pointer; }
+input[type="file"]::file-selector-button:hover { background: #d8e9e3; }
 textarea { min-height: 7rem; resize: vertical; }
 input:focus, select:focus, textarea:focus { border-color: var(--teal-dark); box-shadow: 0 0 0 3px rgba(20, 125, 120, .16); }
 input::placeholder, textarea::placeholder { color: #667b75; opacity: 1; }
