@@ -72,11 +72,10 @@ Finding: every public route inherited the homepage canonical and Open Graph URL;
 
 Fixes: added route-specific metadata and canonicals, noindexed auth/recovery pages, corrected public profile Open Graph data, and added standards-based `/robots.txt` and `/sitemap.xml` routes.
 
-Retest requirement: production Lighthouse and live head inspection after deployment.
+Retest: passed. Every inspected public route now has its own canonical and Open Graph URL; login is `noindex, nofollow`; robots, sitemap, manifest, and icon return 200.
 
 ## 10. Performance and production consistency
 
 Baseline Lighthouse: homepage performance 99, Maya performance 99, zero layout shift, 10–40 ms total blocking time, and 177–179 KiB transfer. Best Practices scored 92 only because the blocked Google Fonts request logged CSP errors; Maya SEO scored 91 because of the canonical defect.
 
-Fixes from cycles 7 and 9 remove both root causes. Final production checks verify performance, Best Practices, SEO, request origins, metadata routes, deployed commit, live route status, and local/remote/source equality.
-
+Fixes from cycles 7 and 9 removed both root causes. Final production Lighthouse scores are 100 for Performance, Accessibility, Best Practices, and SEO on both the homepage and Maya. Homepage FCP/LCP are 1.0/1.4 seconds; Maya FCP/LCP are 0.9/1.0 seconds; total blocking time is 10–30 ms; cumulative layout shift is 0; transfer is 176–179 KiB; and every observed request is first-party to `synalepha.org`. Protected routes return HTTP 307, metadata routes return 200, the deployment is Ready, and local `HEAD`, remote `main`, and GitHub agree.
