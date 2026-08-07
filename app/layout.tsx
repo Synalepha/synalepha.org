@@ -15,20 +15,11 @@ export const metadata: Metadata = {
     siteName: "LoudPage",
     type: "website",
     locale: "en_US",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "LoudPage — Your internet should feel like you",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/opengraph-image"],
   },
   robots: { index: true, follow: true },
 };
