@@ -1,0 +1,2 @@
+import Link from 'next/link';import {Brand} from '@/components/Brand';
+export default function NotFound(){return <main className="state-page"><Brand/><p className="eyebrow">404 · SIGNAL LOST</p><h1>This corner of the internet is empty.</h1><p>The page may be private, renamed, removed, or simply not built yet.</p><div><Link className="primary" href="/">Return home</Link><Link href="/u/maya">Open the staged profile</Link></div></main>}
