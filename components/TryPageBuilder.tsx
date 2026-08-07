@@ -7,7 +7,7 @@ const themes = {
   sunset: { label: "Sunset", accent: "#ff725e", shadow: "#ffd84a" },
   paper: { label: "Paper", accent: "#46513f", shadow: "#d6b45a" },
 } as const;
-const starters = ["About me", "Page signal", "Profile song", "Chosen people"];
+const starters = ["About me", "Status", "Profile song", "Chosen people"];
 type ThemeKey = keyof typeof themes;
 export function TryPageBuilder() {
   const [name, setName] = useState("Maya"),
@@ -58,12 +58,13 @@ export function TryPageBuilder() {
   return (
     <section className="try-builder" id="try-builder">
       <div className="builder-intro">
-        <p className="eyebrow">THE 60-SECOND CREATION MIRACLE</p>
-        <h2>Make something before we ask for anything.</h2>
+        <p className="eyebrow">MAKE YOURS IN THREE MOVES</p>
+        <h2>Make your first page before you sign up.</h2>
         <p>
-          This page lives only in this browser until you choose to claim it. No
-          account. No fake publishing. No surprise upload.
+          Try everything here. Your private draft stays in this browser until
+          you choose to make it yours.
         </p>
+        <p className="builder-step"><b>1</b><span><strong>Name it</strong> Say who you are right now.</span></p>
         <div className="builder-fields">
           <label>
             Your name
@@ -74,7 +75,7 @@ export function TryPageBuilder() {
             />
           </label>
           <label>
-            Your one-line signal
+            Short bio
             <input
               value={headline}
               onChange={(e) => setHeadline(e.target.value)}
@@ -90,8 +91,9 @@ export function TryPageBuilder() {
             />
           </label>
         </div>
+        <p className="builder-step"><b>2</b><span><strong>Shape it</strong> Choose a starting style.</span></p>
         <fieldset>
-          <legend>Choose a visual seed</legend>
+          <legend>Starting style</legend>
           <div className="theme-choices">
             {Object.entries(themes).map(([key, value]) => (
               <button
@@ -106,29 +108,21 @@ export function TryPageBuilder() {
             ))}
           </div>
         </fieldset>
-        <div className="module-order">
-          <b>Arrange your page</b>
-          {modules.map((module, index) => (
-            <div key={module}>
-              <span aria-hidden="true">⠿</span>
-              <strong>{module}</strong>
-              <button
-                onClick={() => move(index, -1)}
-                disabled={index === 0}
-                aria-label={`Move ${module} up`}
-              >
-                ↑
-              </button>
-              <button
-                onClick={() => move(index, 1)}
-                disabled={index === modules.length - 1}
-                aria-label={`Move ${module} down`}
-              >
-                ↓
-              </button>
-            </div>
-          ))}
-        </div>
+        <details className="builder-more">
+          <summary>Make it more yours</summary>
+          <div className="module-order">
+            <b>Arrange your page</b>
+            {modules.map((module, index) => (
+              <div key={module}>
+                <span aria-hidden="true">⠿</span>
+                <strong>{module}</strong>
+                <button onClick={() => move(index, -1)} disabled={index === 0} aria-label={`Move ${module} up`}>↑</button>
+                <button onClick={() => move(index, 1)} disabled={index === modules.length - 1} aria-label={`Move ${module} down`}>↓</button>
+              </div>
+            ))}
+          </div>
+        </details>
+        <p className="builder-step"><b>3</b><span><strong>See it live</strong> Preview it before anything is published.</span></p>
         <div className="builder-actions">
           <button
             className="secondary-button"
@@ -137,7 +131,7 @@ export function TryPageBuilder() {
             {mobile ? "Show desktop" : "Preview mobile"}
           </button>
           <Link className="primary" href="/signup">
-            Claim this page →
+            Make it mine →
           </Link>
           <span role="status">{saved ? "Saved in this browser" : ""}</span>
         </div>
@@ -157,9 +151,9 @@ export function TryPageBuilder() {
         </div>
         <div className="disposable-identity">
           <div>{initials}</div>
-          <p className="eyebrow">LOUDPAGE / UNCLAIMED</p>
+          <p className="eyebrow">PRIVATE DRAFT</p>
           <h3>{name || "Your name"}</h3>
-          <p>{headline || "Your signal goes here"}</p>
+          <p>{headline || "Your short bio goes here"}</p>
           <mark>mood: {mood || "unset"}</mark>
         </div>
         {modules.map((module, index) => (
@@ -167,8 +161,8 @@ export function TryPageBuilder() {
             <small>0{index + 1}</small>
             <b>{module}</b>
             <span>
-              {module === "Page signal"
-                ? "◉ broadcasting gently"
+              {module === "Status"
+                ? "Here right now"
                 : module === "Profile song"
                   ? "▶ nothing autoplays"
                   : module === "Chosen people"

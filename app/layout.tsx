@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const title = "LoudPage — Make your corner of the internet loud";
+const title = "LoudPage — Your internet should feel like you";
 const description =
   "LoudPage is a personal-page social network for expressive profiles, mutual friendships, and chronological updates—without follower contests or algorithmic outrage.";
 export const metadata: Metadata = {

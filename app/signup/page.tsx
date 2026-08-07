@@ -16,7 +16,7 @@ export default function Signup() {
       <Brand />
       <section>
         <p className="eyebrow">ONE PERSON · ONE ACCOUNT</p>
-        <h1>Make your corner of the internet loud.</h1>
+        <h1>Your page starts here.</h1>
         <p className="auth-intro">
           Create one private home for your page and activity. Existing accounts
           are preserved, never replaced. Under-18 pages begin Only me, cannot

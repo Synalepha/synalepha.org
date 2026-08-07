@@ -22,8 +22,8 @@ export function DemoProfile() {
       <header className="topbar profile-topbar">
         <Brand />
         <nav>
-          <Link href="/#try-builder">Build in 60 seconds</Link>
-          <Link href="/#demo">Tour</Link>
+          <Link href="/#try-builder">Make a page</Link>
+          <Link href="/">Why LoudPage</Link>
           <Link className="nav-cta" href="/signup">
             Make yours
           </Link>

@@ -5,28 +5,28 @@ const steps = [
   {
     k: "CHOOSE",
     title: "Claim a handle",
-    copy: "One account. One page. Set the audience before anything leaves backstage.",
+    copy: "One account. One page. Choose who can see it before it is published.",
     signal: "@maya",
     detail: "Audience · Only me",
   },
   {
     k: "SHAPE",
-    title: "Choose your signal",
-    copy: "Pick a template, typography, rhythm, story, mood, and profile song.",
+    title: "Make it yours",
+    copy: "Choose a style, tell your story, set a mood, and add a profile song.",
     signal: "MIDNIGHT SIGNAL",
     detail: "Browser draft · saved",
   },
   {
     k: "PREVIEW",
     title: "See what they see",
-    copy: "Public Preview displays the exact audience, modules, and styling without another login.",
+    copy: "Preview the page exactly as your chosen audience will see it.",
     signal: "PUBLIC PREVIEW",
     detail: "Audience · Friends only",
   },
   {
     k: "CONNECT",
-    title: "Invite actual humans",
-    copy: "Mutual friendships unlock messages. Age-group separation and private blocks are enforced.",
+    title: "Invite your people",
+    copy: "Messages open after both people connect. Adult and minor discovery stays separate.",
     signal: "3 FRIENDS",
     detail: "Feed · newest first",
   },
@@ -38,7 +38,7 @@ export function InteractiveTour() {
     <section className="interactive-tour" id="demo">
       <div>
         <p className="eyebrow">30-SECOND INTERACTIVE TOUR</p>
-        <h2>Do not imagine the loop. Touch it.</h2>
+        <h2>See how a page comes to life.</h2>
         <div
           className="tour-tabs"
           role="tablist"
@@ -104,7 +104,7 @@ export function InteractiveTour() {
           <span>PROFILE SONG</span>
           <span>INNER CIRCLE</span>
         </div>
-        <Link href="/u/maya">Open the working staged profile →</Link>
+        <Link href="/u/maya">See Maya&apos;s example page →</Link>
       </div>
     </section>
   );
