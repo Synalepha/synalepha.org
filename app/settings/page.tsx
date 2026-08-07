@@ -21,7 +21,13 @@ export default async function Settings() {
       new Date(p.birth_date) >
         new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
   );
-  const completed = [Boolean(p.display_name), Boolean(p.bio), Boolean(p.mood), Boolean(p.theme), p.visibility !== null].filter(Boolean).length;
+  const completed = [
+    Boolean(p.display_name),
+    Boolean(p.bio),
+    Boolean(p.mood),
+    Boolean(p.theme),
+    p.visibility !== null,
+  ].filter(Boolean).length;
   return (
     <AppShell profile={p}>
       <div className="settings-page">
@@ -31,7 +37,13 @@ export default async function Settings() {
           Choose a template, tune its voice, set hard boundaries, and preview
           exactly what other people will see.
         </p>
-        <ol className="onboarding-path" aria-label="Page creation progress"><li className="done">Claim identity</li><li className={p.bio ? "done" : ""}>Tell your story</li><li className={p.mood ? "done" : ""}>Set Page Signal</li><li className={p.theme ? "done" : ""}>Compose the page</li><li>Preview &amp; publish</li></ol>
+        <ol className="onboarding-path" aria-label="Page creation progress">
+          <li className="done">Claim identity</li>
+          <li className={p.bio ? "done" : ""}>Tell your story</li>
+          <li className={p.mood ? "done" : ""}>Set Page Signal</li>
+          <li className={p.theme ? "done" : ""}>Compose the page</li>
+          <li>Preview &amp; publish</li>
+        </ol>
         <ProfileForm profile={p} isMinor={isMinor} />
       </div>
     </AppShell>

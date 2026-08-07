@@ -1,2 +1,97 @@
-import {notFound,redirect} from 'next/navigation';import {createClient} from '@/lib/supabase/server';import {AppShell} from '@/components/AppShell';import {moderateMedia,reviewReport} from '@/app/actions';
-export default async function Admin(){const supabase=await createClient();const {data:{user}}=await supabase.auth.getUser();if(!user)redirect('/login');const [{data:me},{data:role}]=await Promise.all([supabase.from('profiles').select('username,display_name,avatar_url').eq('id',user.id).single(),supabase.from('admins').select('role').eq('user_id',user.id).maybeSingle()]);if(!role)notFound();const [{data:reports},{data:media}]=await Promise.all([supabase.from('reports').select('id,target_type,target_id,reason,details,status,created_at').in('status',['open','reviewing']).order('created_at'),supabase.from('media').select('id,storage_path,mime_type,caption,moderation_state,created_at').eq('moderation_state','pending').order('created_at')]);return <AppShell profile={me||{username:null,display_name:null,avatar_url:null}}><div className="directory-page"><p className="eyebrow">TRUST &amp; SAFETY · {role.role}</p><h1>Moderation queue</h1><section><h2>Reports</h2>{reports?.length?reports.map(r=><article className="page-module" key={r.id}><b>{r.reason}</b><p>{r.target_type} · {r.target_id}</p><p>{r.details}</p><form action={reviewReport}><input type="hidden" name="report_id" value={r.id}/><button name="status" value="reviewing">Reviewing</button><button name="status" value="resolved">Resolve</button><button name="status" value="dismissed">Dismiss</button></form></article>):<div className="empty"><b>No open reports.</b></div>}</section><section><h2>Pending media</h2>{media?.length?media.map(m=><article className="page-module" key={m.id}><b>{m.mime_type}</b><p>{m.storage_path}</p><p>{m.caption}</p><form action={moderateMedia}><input type="hidden" name="media_id" value={m.id}/><button name="moderation_state" value="approved">Approve</button><button name="moderation_state" value="rejected">Reject</button></form></article>):<div className="empty"><b>No media awaiting review.</b></div>}</section></div></AppShell>}
+import { notFound, redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import { AppShell } from "@/components/AppShell";
+import { moderateMedia, reviewReport } from "@/app/actions";
+export default async function Admin() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
+  const [{ data: me }, { data: role }] = await Promise.all([
+    supabase
+      .from("profiles")
+      .select("username,display_name,avatar_url")
+      .eq("id", user.id)
+      .single(),
+    supabase.from("admins").select("role").eq("user_id", user.id).maybeSingle(),
+  ]);
+  if (!role) notFound();
+  const [{ data: reports }, { data: media }] = await Promise.all([
+    supabase
+      .from("reports")
+      .select("id,target_type,target_id,reason,details,status,created_at")
+      .in("status", ["open", "reviewing"])
+      .order("created_at"),
+    supabase
+      .from("media")
+      .select("id,storage_path,mime_type,caption,moderation_state,created_at")
+      .eq("moderation_state", "pending")
+      .order("created_at"),
+  ]);
+  return (
+    <AppShell
+      profile={me || { username: null, display_name: null, avatar_url: null }}
+    >
+      <div className="directory-page">
+        <p className="eyebrow">TRUST &amp; SAFETY · {role.role}</p>
+        <h1>Moderation queue</h1>
+        <section>
+          <h2>Reports</h2>
+          {reports?.length ? (
+            reports.map((r) => (
+              <article className="page-module" key={r.id}>
+                <b>{r.reason}</b>
+                <p>
+                  {r.target_type} · {r.target_id}
+                </p>
+                <p>{r.details}</p>
+                <form action={reviewReport}>
+                  <input type="hidden" name="report_id" value={r.id} />
+                  <button name="status" value="reviewing">
+                    Reviewing
+                  </button>
+                  <button name="status" value="resolved">
+                    Resolve
+                  </button>
+                  <button name="status" value="dismissed">
+                    Dismiss
+                  </button>
+                </form>
+              </article>
+            ))
+          ) : (
+            <div className="empty">
+              <b>No open reports.</b>
+            </div>
+          )}
+        </section>
+        <section>
+          <h2>Pending media</h2>
+          {media?.length ? (
+            media.map((m) => (
+              <article className="page-module" key={m.id}>
+                <b>{m.mime_type}</b>
+                <p>{m.storage_path}</p>
+                <p>{m.caption}</p>
+                <form action={moderateMedia}>
+                  <input type="hidden" name="media_id" value={m.id} />
+                  <button name="moderation_state" value="approved">
+                    Approve
+                  </button>
+                  <button name="moderation_state" value="rejected">
+                    Reject
+                  </button>
+                </form>
+              </article>
+            ))
+          ) : (
+            <div className="empty">
+              <b>No media awaiting review.</b>
+            </div>
+          )}
+        </section>
+      </div>
+    </AppShell>
+  );
+}

@@ -2,6 +2,10 @@ import Link from "next/link";
 import { Brand } from "@/components/Brand";
 import { InteractiveTour } from "@/components/InteractiveTour";
 import { TryPageBuilder } from "@/components/TryPageBuilder";
+export const metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 const people = [
   ["Maya", "M"],
   ["Jules", "J"],
@@ -52,11 +56,7 @@ export default function Landing() {
               discovery separated
             </p>
           </div>
-          <Link
-            href="/u/maya"
-            className="profile-card-link"
-            aria-label="Open Maya staged profile"
-          >
+          <Link href="/u/maya" className="profile-card-link">
             <div className="profile-card synth-card">
               <div className="windowbar">
                 <span>● ● ●</span>
@@ -160,9 +160,9 @@ export default function Landing() {
             </p>
             <div className="trust-links">
               <Link href="/privacy">Privacy promise</Link>
-            <Link href="/safety">Safety Center</Link>
-            <Link href="/trust">Trust Console</Link>
-            <Link href="/status">Product status</Link>
+              <Link href="/safety">Safety Center</Link>
+              <Link href="/trust">Trust Console</Link>
+              <Link href="/status">Product status</Link>
               <Link href="/community">Community rules</Link>
             </div>
           </div>

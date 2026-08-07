@@ -1,4 +1,83 @@
-'use client';
-import {useState,type FormEvent} from 'react';import {createClient} from '@supabase/supabase-js';
-function recoveryClient(){return createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true}})}
-export function PasswordRecovery(){const [state,setState]=useState({error:'',success:'',pending:false});async function submit(event:FormEvent<HTMLFormElement>){event.preventDefault();const form=new FormData(event.currentTarget);const email=String(form.get('email')||'').trim();if(!email){setState({error:'Enter the email address for your existing account.',success:'',pending:false});return}setState({error:'',success:'',pending:true});const {error}=await recoveryClient().auth.resetPasswordForEmail(email,{redirectTo:`${window.location.origin}/reset-password`});setState(error?{error:'We could not send a reset email right now. Wait a moment and try again.',success:'',pending:false}:{error:'',success:'If an account exists for that email, a password-reset link is on its way. Open the newest email.',pending:false})}return <details className="resend-box"><summary>Already confirmed but can’t log in?</summary><form onSubmit={submit}><p className="recovery-note">Reset the password on the existing account. This recovery link works even when your email app opens a different browser.</p><label>Email<input name="email" type="email" required autoComplete="email"/></label>{state.error&&<p className="form-error" role="alert">{state.error}</p>}{state.success&&<p className="form-success" role="status">{state.success}</p>}<button disabled={state.pending}>{state.pending?'Sending…':'Reset my password'}</button></form></details>}
+"use client";
+import { useState, type FormEvent } from "react";
+import { createClient } from "@supabase/supabase-js";
+function recoveryClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    {
+      auth: {
+        flowType: "implicit",
+        detectSessionInUrl: true,
+        persistSession: true,
+      },
+    },
+  );
+}
+export function PasswordRecovery() {
+  const [state, setState] = useState({
+    error: "",
+    success: "",
+    pending: false,
+  });
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const email = String(form.get("email") || "").trim();
+    if (!email) {
+      setState({
+        error: "Enter the email address for your existing account.",
+        success: "",
+        pending: false,
+      });
+      return;
+    }
+    setState({ error: "", success: "", pending: true });
+    const { error } = await recoveryClient().auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setState(
+      error
+        ? {
+            error:
+              "We could not send a reset email right now. Wait a moment and try again.",
+            success: "",
+            pending: false,
+          }
+        : {
+            error: "",
+            success:
+              "If an account exists for that email, a password-reset link is on its way. Open the newest email.",
+            pending: false,
+          },
+    );
+  }
+  return (
+    <details className="resend-box">
+      <summary>Already confirmed but can’t log in?</summary>
+      <form onSubmit={submit}>
+        <p className="recovery-note">
+          Reset the password on the existing account. This recovery link works
+          even when your email app opens a different browser.
+        </p>
+        <label>
+          Email
+          <input name="email" type="email" required autoComplete="email" />
+        </label>
+        {state.error && (
+          <p className="form-error" role="alert">
+            {state.error}
+          </p>
+        )}
+        {state.success && (
+          <p className="form-success" role="status">
+            {state.success}
+          </p>
+        )}
+        <button disabled={state.pending}>
+          {state.pending ? "Sending…" : "Reset my password"}
+        </button>
+      </form>
+    </details>
+  );
+}

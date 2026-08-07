@@ -268,7 +268,11 @@ const profileInput = z.object({
   theme_accent: z.enum(["violet", "cyan", "pink", "orange"]),
   signal_line: z.string().trim().max(60),
   signal_status: z.string().trim().max(80),
-  module_order: z.enum(["about,signal,song,circle,guestbook", "signal,about,song,circle,guestbook", "song,signal,about,circle,guestbook"]),
+  module_order: z.enum([
+    "about,signal,song,circle,guestbook",
+    "signal,about,song,circle,guestbook",
+    "song,signal,about,circle,guestbook",
+  ]),
 });
 export async function updateProfile(
   _: unknown,
@@ -348,13 +352,11 @@ async function requireUser() {
 export async function requestFriend(form: FormData) {
   const addressee = z.uuid().parse(form.get("user_id"));
   const { supabase, user } = await requireUser();
-  const { error } = await supabase
-    .from("friendships")
-    .insert({
-      requester_id: user.id,
-      addressee_id: addressee,
-      status: "pending",
-    });
+  const { error } = await supabase.from("friendships").insert({
+    requester_id: user.id,
+    addressee_id: addressee,
+    status: "pending",
+  });
   if (error)
     throw new Error(
       error.code === "42501"
@@ -402,13 +404,11 @@ export async function postProfileComment(form: FormData) {
     })
     .parse(Object.fromEntries(form));
   const { supabase, user } = await requireUser();
-  const { error } = await supabase
-    .from("profile_comments")
-    .insert({
-      profile_id: parsed.profile_id,
-      author_id: user.id,
-      body: parsed.body,
-    });
+  const { error } = await supabase.from("profile_comments").insert({
+    profile_id: parsed.profile_id,
+    author_id: user.id,
+    body: parsed.body,
+  });
   if (error) throw new Error("Your guestbook note could not be posted.");
   revalidatePath(`/u/${parsed.username}`);
 }
@@ -427,15 +427,13 @@ export async function reportMember(form: FormData) {
     .object({ user_id: z.uuid(), details: z.string().trim().max(1000) })
     .parse(Object.fromEntries(form));
   const { supabase, user } = await requireUser();
-  const { error } = await supabase
-    .from("reports")
-    .insert({
-      reporter_id: user.id,
-      target_type: "profile",
-      target_id: parsed.user_id,
-      reason: "Profile or behavior concern",
-      details: parsed.details || null,
-    });
+  const { error } = await supabase.from("reports").insert({
+    reporter_id: user.id,
+    target_type: "profile",
+    target_id: parsed.user_id,
+    reason: "Profile or behavior concern",
+    details: parsed.details || null,
+  });
   if (error) throw new Error("The report could not be submitted.");
   revalidatePath("/admin");
   redirect("/account/reports?submitted=1");
@@ -459,13 +457,11 @@ export async function startMessage(form: FormData) {
     { other_user: parsed.recipient_id },
   );
   if (startError) throw new Error("That conversation could not be started.");
-  const { error } = await supabase
-    .from("messages")
-    .insert({
-      conversation_id: conversation,
-      sender_id: user.id,
-      body: parsed.body,
-    });
+  const { error } = await supabase.from("messages").insert({
+    conversation_id: conversation,
+    sender_id: user.id,
+    body: parsed.body,
+  });
   if (error) throw new Error("Your message could not be sent.");
   revalidatePath("/messages");
 }

@@ -1,2 +1,121 @@
-import Link from 'next/link';import {redirect} from 'next/navigation';import {createClient} from '@/lib/supabase/server';import {AppShell} from '@/components/AppShell';import {answerFriendRequest,removeFriend} from '@/app/actions';
-export default async function Friends(){const supabase=await createClient();const {data:{user}}=await supabase.auth.getUser();if(!user)redirect('/login');const [{data:me},{data:rows}]=await Promise.all([supabase.from('profiles').select('username,display_name,avatar_url').eq('id',user.id).single(),supabase.from('friendships').select('requester_id,addressee_id,status,requester:profiles!friendships_requester_id_fkey(username,display_name),addressee:profiles!friendships_addressee_id_fkey(username,display_name)').or(`requester_id.eq.${user.id},addressee_id.eq.${user.id}`).order('created_at',{ascending:false})]);const accepted=rows?.filter(r=>r.status==='accepted')||[],incoming=rows?.filter(r=>r.status==='pending'&&r.addressee_id===user.id)||[],outgoing=rows?.filter(r=>r.status==='pending'&&r.requester_id===user.id)||[];return <AppShell profile={me||{username:null,display_name:null,avatar_url:null}}><div className="directory-page"><p className="eyebrow">FRIENDS</p><h1>People you chose</h1><p className="lede">Friendship is mutual here. No followers, no audience-size contest.</p>{incoming.length>0&&<section><h2>Requests for you</h2><div className="people-grid">{incoming.map((r:any)=><article className="person-card compact-card" key={r.requester_id}><div className="avatar">{(r.requester?.display_name||'?')[0]}</div><div><Link href={`/u/${r.requester?.username}`}><b>{r.requester?.display_name}</b></Link><form action={answerFriendRequest}><input type="hidden" name="requester_id" value={r.requester_id}/><button name="decision" value="accepted">Accept</button><button name="decision" value="declined">Decline</button></form></div></article>)}</div></section>}{accepted.length?<div className="people-grid">{accepted.map((r:any)=>{const otherId=r.requester_id===user.id?r.addressee_id:r.requester_id,p=r.requester_id===user.id?r.addressee:r.requester;return <article className="person-card compact-card" key={otherId}><div className="avatar">{(p.display_name||p.username)[0]}</div><div><Link href={`/u/${p.username}`}><h2>{p.display_name||p.username}</h2></Link><small>@{p.username}</small><form action={removeFriend}><input type="hidden" name="user_id" value={otherId}/><button>Remove</button></form></div></article>})}</div>:<div className="empty"><b>Your friend list is waiting.</b><p>Browse public pages and send a request.</p><Link href="/discover">Discover people</Link></div>}{outgoing.length>0&&<p>{outgoing.length} request{outgoing.length===1?' is':'s are'} awaiting a response.</p>}</div></AppShell>}
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import { AppShell } from "@/components/AppShell";
+import { answerFriendRequest, removeFriend } from "@/app/actions";
+export default async function Friends() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
+  const [{ data: me }, { data: rows }] = await Promise.all([
+    supabase
+      .from("profiles")
+      .select("username,display_name,avatar_url")
+      .eq("id", user.id)
+      .single(),
+    supabase
+      .from("friendships")
+      .select(
+        "requester_id,addressee_id,status,requester:profiles!friendships_requester_id_fkey(username,display_name),addressee:profiles!friendships_addressee_id_fkey(username,display_name)",
+      )
+      .or(`requester_id.eq.${user.id},addressee_id.eq.${user.id}`)
+      .order("created_at", { ascending: false }),
+  ]);
+  const accepted = rows?.filter((r) => r.status === "accepted") || [],
+    incoming =
+      rows?.filter(
+        (r) => r.status === "pending" && r.addressee_id === user.id,
+      ) || [],
+    outgoing =
+      rows?.filter(
+        (r) => r.status === "pending" && r.requester_id === user.id,
+      ) || [];
+  return (
+    <AppShell
+      profile={me || { username: null, display_name: null, avatar_url: null }}
+    >
+      <div className="directory-page">
+        <p className="eyebrow">FRIENDS</p>
+        <h1>People you chose</h1>
+        <p className="lede">
+          Friendship is mutual here. No followers, no audience-size contest.
+        </p>
+        {incoming.length > 0 && (
+          <section>
+            <h2>Requests for you</h2>
+            <div className="people-grid">
+              {incoming.map((r: any) => (
+                <article
+                  className="person-card compact-card"
+                  key={r.requester_id}
+                >
+                  <div className="avatar">
+                    {(r.requester?.display_name || "?")[0]}
+                  </div>
+                  <div>
+                    <Link href={`/u/${r.requester?.username}`}>
+                      <b>{r.requester?.display_name}</b>
+                    </Link>
+                    <form action={answerFriendRequest}>
+                      <input
+                        type="hidden"
+                        name="requester_id"
+                        value={r.requester_id}
+                      />
+                      <button name="decision" value="accepted">
+                        Accept
+                      </button>
+                      <button name="decision" value="declined">
+                        Decline
+                      </button>
+                    </form>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+        {accepted.length ? (
+          <div className="people-grid">
+            {accepted.map((r: any) => {
+              const otherId =
+                  r.requester_id === user.id ? r.addressee_id : r.requester_id,
+                p = r.requester_id === user.id ? r.addressee : r.requester;
+              return (
+                <article className="person-card compact-card" key={otherId}>
+                  <div className="avatar">
+                    {(p.display_name || p.username)[0]}
+                  </div>
+                  <div>
+                    <Link href={`/u/${p.username}`}>
+                      <h2>{p.display_name || p.username}</h2>
+                    </Link>
+                    <small>@{p.username}</small>
+                    <form action={removeFriend}>
+                      <input type="hidden" name="user_id" value={otherId} />
+                      <button>Remove</button>
+                    </form>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="empty">
+            <b>Your friend list is waiting.</b>
+            <p>Browse public pages and send a request.</p>
+            <Link href="/discover">Discover people</Link>
+          </div>
+        )}
+        {outgoing.length > 0 && (
+          <p>
+            {outgoing.length} request{outgoing.length === 1 ? " is" : "s are"}{" "}
+            awaiting a response.
+          </p>
+        )}
+      </div>
+    </AppShell>
+  );
+}

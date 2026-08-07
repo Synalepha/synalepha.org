@@ -212,12 +212,26 @@ export function ProfileForm({
           </label>
           <label>
             Page Signal headline
-            <input name="signal_line" defaultValue={theme.signal_line || profile.mood || "quietly online"} maxLength={60} placeholder="electric after midnight" />
-            <span className="field-hint">The signature line people see when your page is shared.</span>
+            <input
+              name="signal_line"
+              defaultValue={
+                theme.signal_line || profile.mood || "quietly online"
+              }
+              maxLength={60}
+              placeholder="electric after midnight"
+            />
+            <span className="field-hint">
+              The signature line people see when your page is shared.
+            </span>
           </label>
           <label>
             Page Signal status
-            <input name="signal_status" defaultValue={theme.signal_status || "open to a quiet hello"} maxLength={80} placeholder="open to a quiet hello" />
+            <input
+              name="signal_status"
+              defaultValue={theme.signal_status || "open to a quiet hello"}
+              maxLength={80}
+              placeholder="open to a quiet hello"
+            />
           </label>
         </div>
       </fieldset>
@@ -267,15 +281,33 @@ export function ProfileForm({
           <label>
             Accent color
             <select name="theme_accent" defaultValue={theme.accent || "violet"}>
-              <option value="violet">Voltage violet</option><option value="cyan">Signal cyan</option><option value="pink">Hot pink</option><option value="orange">Sunset orange</option>
+              <option value="violet">Voltage violet</option>
+              <option value="cyan">Signal cyan</option>
+              <option value="pink">Hot pink</option>
+              <option value="orange">Sunset orange</option>
             </select>
           </label>
           <label className="wide">
             Module order
-            <select name="module_order" defaultValue={theme.module_order || "about,signal,song,circle,guestbook"}>
-              <option value="about,signal,song,circle,guestbook">Story first</option><option value="signal,about,song,circle,guestbook">Signal first</option><option value="song,signal,about,circle,guestbook">Music first</option>
+            <select
+              name="module_order"
+              defaultValue={
+                theme.module_order || "about,signal,song,circle,guestbook"
+              }
+            >
+              <option value="about,signal,song,circle,guestbook">
+                Story first
+              </option>
+              <option value="signal,about,song,circle,guestbook">
+                Signal first
+              </option>
+              <option value="song,signal,about,circle,guestbook">
+                Music first
+              </option>
             </select>
-            <span className="field-hint">Curated arrangements protect responsive layout and keyboard order.</span>
+            <span className="field-hint">
+              Curated arrangements protect responsive layout and keyboard order.
+            </span>
           </label>
           <label className="check-row">
             <input
@@ -287,9 +319,23 @@ export function ProfileForm({
           </label>
         </div>
       </fieldset>
-      <section className={`composer-preview theme-${theme.preset || "classic"}`} aria-label="Live page composition summary">
-        <div><p className="eyebrow">LIVE COMPOSER</p><h2>{profile.display_name || profile.username}</h2><p>{profile.bio || "Your story starts here."}</p></div>
-        <div><b>Draft-safe</b><span>Autosave survives refresh</span><b>Reversible</b><span>Restore or discard browser draft</span><b>Exact</b><span>Public Preview uses saved settings</span></div>
+      <section
+        className={`composer-preview theme-${theme.preset || "classic"}`}
+        aria-label="Live page composition summary"
+      >
+        <div>
+          <p className="eyebrow">LIVE COMPOSER</p>
+          <h2>{profile.display_name || profile.username}</h2>
+          <p>{profile.bio || "Your story starts here."}</p>
+        </div>
+        <div>
+          <b>Draft-safe</b>
+          <span>Autosave survives refresh</span>
+          <b>Reversible</b>
+          <span>Restore or discard browser draft</span>
+          <b>Exact</b>
+          <span>Public Preview uses saved settings</span>
+        </div>
       </section>
       <fieldset>
         <legend>Audience &amp; boundaries</legend>

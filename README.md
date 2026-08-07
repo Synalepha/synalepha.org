@@ -40,4 +40,4 @@ npm run test:authorization
 
 The repository root deploys directly to the Vercel project serving `synalepha.org`. Supabase migrations in `supabase/migrations` are applied in numeric order.
 
-The implementation and ten follow-up audit loops are recorded in `PRODUCT_AUDIT.md`.
+The product implementation is recorded in `PRODUCT_AUDIT.md`; the evidence and results from ten independent audit cycles are recorded in `AUDIT_CYCLES.md`.

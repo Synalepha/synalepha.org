@@ -1,10 +1,15 @@
-import {NextResponse} from 'next/server';
-import {createClient} from '@/lib/supabase/server';
+import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
 
-export async function GET(){
-  const supabase=await createClient();
-  const {data:{user}}=await supabase.auth.getUser();
+export async function GET() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return user
-    ? NextResponse.json({ok:true})
-    : NextResponse.json({error:'No authenticated session.'},{status:401});
+    ? NextResponse.json({ ok: true })
+    : NextResponse.json(
+        { error: "No authenticated session." },
+        { status: 401 },
+      );
 }

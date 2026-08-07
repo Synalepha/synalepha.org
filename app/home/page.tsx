@@ -57,8 +57,18 @@ export default async function Home() {
         </aside>
         <section className="feed">
           <section className="weekly-return">
-            <div><p className="eyebrow">YOUR PEOPLE · NO RANKING</p><h2>A small week on purpose.</h2></div>
-            <div><b>{bulletins?.length || 0}</b><span>newest-first updates</span></div><div><b>∞</b><span>minutes without algorithm bait</span></div>
+            <div>
+              <p className="eyebrow">YOUR PEOPLE · NO RANKING</p>
+              <h2>A small week on purpose.</h2>
+            </div>
+            <div>
+              <b>{bulletins?.length || 0}</b>
+              <span>newest-first updates</span>
+            </div>
+            <div>
+              <b>∞</b>
+              <span>minutes without algorithm bait</span>
+            </div>
             <Link href="/friends">Choose who belongs →</Link>
           </section>
           <div className="section-title">
@@ -66,7 +76,9 @@ export default async function Home() {
               <p className="eyebrow">YOUR NEIGHBORHOOD</p>
               <h1>What’s happening</h1>
             </div>
-            <span className="chronological">↓ chronological · no suggested posts</span>
+            <span className="chronological">
+              ↓ chronological · no suggested posts
+            </span>
           </div>
           <form action={postBulletin} className="composer">
             <label htmlFor="bulletin">Post a bulletin</label>
