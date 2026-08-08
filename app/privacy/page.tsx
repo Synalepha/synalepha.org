@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Brand } from "@/components/Brand";
 export const metadata = {
-  title: "Privacy Promise — LoudPage",
+  title: "Privacy Promise — Roomtone",
   description:
-    "How LoudPage handles audiences, personal data, sessions, deletion, and younger members.",
+    "How Roomtone handles audiences, personal data, sessions, deletion, and younger members.",
   alternates: { canonical: "/privacy" },
   openGraph: { url: "/privacy" },
 };
@@ -14,7 +14,7 @@ export default function Privacy() {
       <p className="eyebrow">PRIVACY PROMISE</p>
       <h1>Your page should not cost your privacy.</h1>
       <p>
-        <b>LoudPage is the social product operated at synalepha.org.</b> We
+        <b>Roomtone is the social product operated at synalepha.org.</b> We
         store account information and content you choose to publish so the
         service can work. We do not sell personal data or build a popularity
         score for advertisers.
@@ -29,7 +29,7 @@ export default function Privacy() {
       <h2>Location and presence</h2>
       <p>
         City is optional. Never post a home, school, workplace, or precise live
-        location. LoudPage does not currently publish live-presence status from
+        location. Roomtone does not currently publish live-presence status from
         member profiles.
       </p>
       <h2>Your data, your exit</h2>
@@ -48,7 +48,7 @@ export default function Privacy() {
       </p>
       <h2>Young people</h2>
       <p>
-        LoudPage is 13+. Birth date is collected for age-appropriate safety and
+        Roomtone is 13+. Birth date is collected for age-appropriate safety and
         is not displayed publicly. Young people should use private or
         friends-only visibility and never publish precise location, school
         schedules, or other identifying routines. See the{" "}

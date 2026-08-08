@@ -10,7 +10,7 @@ const admin = createClient(url, service, { auth: { persistSession: false } }),
   password = `Battle-${stamp}-Aa!`,
   ids = [];
 async function make(label) {
-  const email = `loudpage-${label}-${stamp}@example.invalid`;
+  const email = `roomtone-${label}-${stamp}@example.invalid`;
   const { data, error } = await admin.auth.admin.createUser({
     email,
     password,

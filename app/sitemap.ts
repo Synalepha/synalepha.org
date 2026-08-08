@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/safety",
     "/privacy",
     "/community",
+    "/es",
     "/terms",
     "/signup",
   ].map((path, index) => ({

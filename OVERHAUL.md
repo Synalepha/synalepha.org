@@ -1,8 +1,8 @@
-# LoudPage living-canvas overhaul
+# Roomtone living-canvas overhaul
 
 ## Product decision
 
-LoudPage is now organized around one loop: make a personal page, choose who may
+Roomtone is now organized around one loop: make a personal page, choose who may
 see it, give it to someone, receive a meaningful response, and return when a
 person changes. Consumer surfaces use human language. Operational evidence
 remains available on Safety, Trust, and Product Status without interrupting the
@@ -73,5 +73,22 @@ The second overhaul pass makes nostalgia experiential rather than decorative:
 - Paper grain, ruled lines, scan texture, imperfect rotations, ink-like notes,
   and object shadows create tactility without using inaccessible image text.
 - Reduced-motion preferences remove entrance animation and positional motion.
-- The emotional thesis is explicit: LoudPage does not rewind technology; it
+- The emotional thesis is explicit: Roomtone does not rewind technology; it
   restores the feeling that a page was made by and belonged to a person.
+
+## Youth-panel implementation
+
+- The working product name is **Roomtone**. “Knock” was rejected after a web
+  preflight found multiple active social/friending products using that name.
+- The palette is Ink `#171522`, Letter Paper `#F4E8D2`, Dusty Violet `#684FD3`,
+  Pool Light `#16839A`, Mixtape Pink `#C23E72`, Lamp Glow `#E7C84E`, Notebook
+  Blue `#DCEAF0`, Safe Green `#287A52`, and Warning Rust `#A9472F`.
+- Core palette pairings range from 5.26:1 to 18:1 contrast.
+- The local creator now includes a photo strip, alt text, mixtape, taped note,
+  stickers, doodles, per-object audience controls, accessible reordering, Calm
+  Mode, Reading Comfort, Low Data, English/Spanish controls, and offline text
+  object recovery.
+- Selected images remain local object URLs and are never uploaded by the
+  pre-signup experience.
+- The Safety Center begins with four scan cards and moves detail into native,
+  keyboard-accessible disclosures.

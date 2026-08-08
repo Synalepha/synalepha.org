@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const title = "LoudPage — Your internet should feel like you";
+const title = "Roomtone — Your internet should feel like you";
 const description =
-  "LoudPage is a personal-page social network for expressive profiles, mutual friendships, and chronological updates—without follower contests or algorithmic outrage.";
+  "Roomtone is a personal-page social network for expressive profiles, mutual friendships, and chronological updates—without follower contests or algorithmic outrage.";
 export const metadata: Metadata = {
   metadataBase: new URL("https://synalepha.org"),
   title,
   description,
-  applicationName: "LoudPage",
+  applicationName: "Roomtone",
   openGraph: {
     title,
     description,
-    siteName: "LoudPage",
+    siteName: "Roomtone",
     type: "website",
     locale: "en_US",
   },

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Brand } from "@/components/Brand";
 export const metadata = {
-  title: "Safety Center — LoudPage",
+  title: "Safety Center — Roomtone",
   description:
     "Plain-language safety defaults, boundaries, reporting, blocking, and protections for younger members.",
   alternates: { canonical: "/safety" },
@@ -11,63 +11,38 @@ export default function Safety() {
   return (
     <main className="policy-page">
       <Brand />
-      <p className="eyebrow">LOUDPAGE SAFETY CENTER</p>
+      <p className="eyebrow">ROOMTONE SAFETY CENTER</p>
       <h1>Good boundaries make better pages.</h1>
-      <p>
-        This is the short version for members, families, and anyone deciding
-        whether LoudPage deserves their trust.
-      </p>
-      <h2>Under-18 protection is enforced</h2>
-      <p>
-        New under-18 pages begin Only me and cannot be made public. Anonymous
-        visitors cannot view minor profiles. Adult and under-18 discovery and
-        friendship requests are separated by database policy—not merely hidden
-        buttons.
-      </p>
-      <h2>Start closed, open deliberately</h2>
-      <p>
-        Use Only me while building. Switch to Friends only when your page is
-        ready for mutually accepted people. Everyone is available only to adults
-        who genuinely want a public page.
-      </p>
-      <h2>For members under 18</h2>
-      <ul>
-        <li>Use a nickname or pseudonym if that feels safer.</li>
-        <li>Leave city blank when it could identify your school or routine.</li>
-        <li>
-          Never publish an address, schedule, live location, phone number, or
-          private contact information.
-        </li>
-        <li>Friendship requests stay within the under-18 age group.</li>
-        <li>
-          Tell a trusted adult when behavior feels coercive, sexual,
-          threatening, or persistent.
-        </li>
-      </ul>
-      <h2>Messages, comments, tags, and indexing</h2>
-      <p>
-        Private messages require an accepted friendship. Guestbooks can allow
-        visible members, friends only, or nobody. Tag permission is explicit
-        before tagging launches. Search-engine indexing is a separate opt-in and
-        is disabled for minors.
-      </p>
-      <h2>Block</h2>
-      <p>
-        Blocking is private. The blocked member is not notified. Database
-        policies prevent access and interaction where protected.
-      </p>
-      <h2>Report and follow the outcome</h2>
-      <p>
-        Use “Safety &amp; boundaries” on a member page to send a private report.
-        Account &amp; Safety shows whether it is Open, Reviewing, Resolved, or
-        Dismissed.
-      </p>
-      <h2>Families</h2>
-      <p>
-        Review the audience together, avoid shared passwords, and use global
-        sign-out for lost or shared devices. Birth dates power age boundaries
-        and are never public profile fields.
-      </p>
+      <div className="safety-glance" aria-label="Safety at a glance">
+        <article><b>Under 18</b><span>Starts Only me</span></article>
+        <article><b>Messages</b><span>Mutual people only</span></article>
+        <article><b>Block</b><span>Private and immediate</span></article>
+        <article><b>Reports</b><span>Status stays visible</span></article>
+      </div>
+      <details open>
+        <summary>Under-18 protection</summary>
+        <p>Under-18 pages cannot be public. Anonymous visitors cannot see them. Adult and minor discovery stays separate.</p>
+      </details>
+      <details>
+        <summary>What younger members should know</summary>
+        <ul>
+          <li>Use a nickname if it feels safer.</li>
+          <li>Never post your school, routine, address, live location, or phone number.</li>
+          <li>Tell a trusted adult when behavior feels sexual, threatening, coercive, or persistent.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Messages, guestbooks, tags, and search</summary>
+        <p>Messages require a mutual connection. Guestbooks can allow people, friends, or nobody. Search indexing is separate and disabled for minors.</p>
+      </details>
+      <details>
+        <summary>Blocking and reporting</summary>
+        <p>Blocking is private. Reports are private. Report status remains visible as Open, Reviewing, Resolved, or Dismissed.</p>
+      </details>
+      <details>
+        <summary>For families</summary>
+        <p>Review audience choices together. Do not share passwords. Use global sign-out for lost or shared devices. Birth dates are never public.</p>
+      </details>
       <h2>Your control panel</h2>
       <p>
         <Link href="/account">Account &amp; Safety</Link> handles report

@@ -1,6 +1,6 @@
-# LoudPage
+# Roomtone
 
-LoudPage is the expressive, profile-first social network at [synalepha.org](https://synalepha.org): personal pages, mutual friendships, chronological updates, and hard privacy boundaries without follower contests or algorithmic outrage.
+Roomtone is the expressive, profile-first social network at [synalepha.org](https://synalepha.org): personal pages, mutual friendships, chronological updates, and hard privacy boundaries without follower contests or algorithmic outrage.
 
 ## Product surface
 

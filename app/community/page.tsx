@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Brand } from "@/components/Brand";
 export const metadata = {
-  title: "Community Rules — LoudPage",
-  description: "The consent, privacy, safety, and conduct rules for LoudPage.",
+  title: "Community Rules — Roomtone",
+  description: "The consent, privacy, safety, and conduct rules for Roomtone.",
   alternates: { canonical: "/community" },
   openGraph: { url: "/community" },
 };

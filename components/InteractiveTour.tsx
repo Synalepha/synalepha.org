@@ -42,7 +42,7 @@ export function InteractiveTour() {
         <div
           className="tour-tabs"
           role="tablist"
-          aria-label="LoudPage product tour"
+          aria-label="Roomtone product tour"
         >
           {steps.map((item, index) => (
             <button

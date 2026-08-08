@@ -13,13 +13,13 @@ export function DemoProfile() {
     <div className={`public-profile theme-${theme} font-serif density-spacious`}>
       <header className="topbar profile-topbar">
         <Brand />
-        <nav><Link href="/">Why LoudPage</Link><Link className="nav-cta" href="/#try-builder">Make yours</Link></nav>
+        <nav><Link href="/">Why Roomtone</Link><Link className="nav-cta" href="/#try-builder">Make yours</Link></nav>
       </header>
       <div className="example-banner"><b>EXAMPLE PAGE</b><span>Maya is fictional. The interactions are real.</span></div>
       <main className="public-page human-demo">
         <section className="profile-hero">
           <div className="profile-avatar">M</div>
-          <div><p className="eyebrow">LOUDPAGE / MAYA</p><h1>Maya ☻</h1><p>Chicago · designer · night owl</p></div>
+          <div><p className="eyebrow">ROOMTONE / MAYA</p><h1>Maya ☻</h1><p>Chicago · designer · night owl</p></div>
           <span className="audience-chip">● My people</span>
         </section>
 

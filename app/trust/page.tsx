@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Brand } from "@/components/Brand";
 import { TrustConsole } from "@/components/TrustConsole";
 export const metadata = {
-  title: "Trust Console — LoudPage",
+  title: "Trust Console — Roomtone",
   description:
-    "Test LoudPage privacy, age, contact, blocking, and indexing boundaries.",
+    "Test Roomtone privacy, age, contact, blocking, and indexing boundaries.",
   alternates: { canonical: "/trust" },
   openGraph: { url: "/trust" },
 };
@@ -22,7 +22,7 @@ export default function TrustPage() {
         </nav>
       </header>
       <main className="trust-page">
-        <p className="eyebrow">THE LOUDPAGE TRUST CONSOLE</p>
+        <p className="eyebrow">THE ROOMTONE TRUST CONSOLE</p>
         <h1>
           Don’t take our word for it.
           <br />

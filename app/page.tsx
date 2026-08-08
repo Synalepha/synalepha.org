@@ -166,7 +166,7 @@ export default function Landing() {
             A song playing. A note on the wall. People who knock.
           </p>
           <Link className="primary" href="/signup">
-            Make my LoudPage
+            Make my Roomtone
           </Link>
           <small>Free · 13+ · Start privately · Change anything later</small>
         </section>
@@ -176,7 +176,7 @@ export default function Landing() {
         <p>
           A personal page for people, not metrics.
         </p>
-        <small>© 2026 LoudPage · Built for people, not metrics.</small>
+        <small>© 2026 Roomtone · Built for people, not metrics.</small>
       </footer>
     </>
   );

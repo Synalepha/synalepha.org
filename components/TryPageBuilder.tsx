@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { CreationObjects } from "@/components/CreationObjects";
 
 const themes = {
-  electric: { label: "Neon bedroom", accent: "#7c5cff", shadow: "#19d7ff" },
-  midnight: { label: "Midnight mixtape", accent: "#ff4fa3", shadow: "#19d7ff" },
-  sunset: { label: "Disposable sunset", accent: "#ff725e", shadow: "#ffd84a" },
-  paper: { label: "Paper letter", accent: "#46513f", shadow: "#d6b45a" },
+  electric: { label: "Neon bedroom", accent: "#684fd3", shadow: "#16839a" },
+  midnight: { label: "Midnight mixtape", accent: "#c23e72", shadow: "#f4e8d2" },
+  sunset: { label: "Disposable sunset", accent: "#a9472f", shadow: "#e7c84e" },
+  paper: { label: "Paper letter", accent: "#171522", shadow: "#dceaf0" },
 } as const;
 type ThemeKey = keyof typeof themes;
 
@@ -22,7 +23,7 @@ export function TryPageBuilder() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      const raw = localStorage.getItem("loudpage-disposable-page");
+      const raw = localStorage.getItem("roomtone-page-draft-v1") || localStorage.getItem("loudpage-disposable-page");
       if (!raw) return;
       try {
         const d = JSON.parse(raw);
@@ -40,7 +41,7 @@ export function TryPageBuilder() {
 
   useEffect(() => {
     localStorage.setItem(
-      "loudpage-disposable-page",
+      "roomtone-page-draft-v1",
       JSON.stringify({ name, bio, feeling, note, song, theme, audience }),
     );
     const show = window.setTimeout(() => setSaved(true), 0);
@@ -86,7 +87,7 @@ export function TryPageBuilder() {
         style={{ "--demo-accent": themes[theme].accent, "--demo-shadow": themes[theme].shadow } as CSSProperties}
       >
         <div className="canvas-topline">
-          <span>YOUR LOUDPAGE</span>
+          <span>YOUR ROOMTONE</span>
           <label>
             <span className="sr-only">Who can see this page</span>
             <select value={audience} onChange={(event) => setAudience(event.target.value as typeof audience)}>
@@ -130,12 +131,7 @@ export function TryPageBuilder() {
           </label>
           <time>Updated just now</time>
         </section>
-
-        <div className="canvas-placeholders" aria-label="Page sections">
-          <button type="button"><b>＋ Photo</b><span>After signup</span></button>
-          <button type="button"><b>My people</b><span>Invite after saving</span></button>
-          <button type="button"><b>Guestbook</b><span>Notes from friends</span></button>
-        </div>
+        <CreationObjects />
 
         <footer className="canvas-claim">
           <div><b>{audienceLabel}</b><span>This page is not published.</span></div>

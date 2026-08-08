@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "LoudPage — Your internet should feel like you";
+export const alt = "Roomtone — Your internet should feel like you";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,10 +14,10 @@ export default function OpenGraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "70px 76px",
-        color: "#111326",
+        color: "#171522",
         background:
-          "radial-gradient(circle at 88% 15%, rgba(124,92,255,.34), transparent 30%), radial-gradient(circle at 12% 5%, rgba(25,215,255,.25), transparent 25%), #f6f1e7",
-        border: "18px solid #111326",
+          "radial-gradient(circle at 88% 15%, rgba(104,79,211,.3), transparent 30%), radial-gradient(circle at 12% 5%, rgba(22,131,154,.2), transparent 25%), #f4e8d2",
+        border: "18px solid #171522",
       }}
     >
       <div
@@ -36,11 +36,11 @@ export default function OpenGraphImage() {
             width: 34,
             height: 34,
             borderRadius: 17,
-            background: "#7c5cff",
-            boxShadow: "7px 7px 0 #19d7ff",
+            background: "#684fd3",
+            boxShadow: "7px 7px 0 #e7c84e",
           }}
         />
-        LOUDPAGE
+        ROOMTONE
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div

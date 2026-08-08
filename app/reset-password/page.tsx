@@ -1,7 +1,7 @@
 import { Brand } from "@/components/Brand";
 import { PasswordUpdateForm } from "@/components/PasswordUpdateForm";
 export const metadata = {
-  title: "Reset password — LoudPage",
+  title: "Reset password — Roomtone",
   robots: { index: false, follow: false },
 };
 export default function ResetPassword() {
@@ -12,7 +12,7 @@ export default function ResetPassword() {
         <p className="eyebrow">ACCOUNT RECOVERY</p>
         <h1>Choose a new password.</h1>
         <p className="auth-intro">
-          This changes the password on your existing LoudPage account. It does
+          This changes the password on your existing Roomtone account. It does
           not create another account.
         </p>
         <PasswordUpdateForm />

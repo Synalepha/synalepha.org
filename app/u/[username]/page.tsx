@@ -19,12 +19,12 @@ export async function generateMetadata({
   const { username } = await params;
   if (username === "maya")
     return {
-      title: "Maya — an example LoudPage",
+      title: "Maya — an example Roomtone",
       description: "See a personal page that changes when its person does.",
       alternates: { canonical: "/u/maya" },
       openGraph: {
         url: "/u/maya",
-        title: "Maya — an example LoudPage",
+        title: "Maya — an example Roomtone",
         description: "See a personal page that changes when its person does.",
       },
       robots: { index: true, follow: true },
@@ -38,18 +38,18 @@ export async function generateMetadata({
   const index = Boolean(p?.search_indexing && p.visibility === "public");
   return {
     title: p
-      ? `${p.display_name || p.username} — LoudPage`
-      : "LoudPage profile",
+      ? `${p.display_name || p.username} — Roomtone`
+      : "Roomtone profile",
     description:
-      p?.bio?.slice(0, 160) || "An expressive personal page on LoudPage.",
+      p?.bio?.slice(0, 160) || "An expressive personal page on Roomtone.",
     alternates: { canonical: `/u/${username}` },
     openGraph: {
       url: `/u/${username}`,
       title: p
-        ? `${p.display_name || p.username} — LoudPage`
-        : "LoudPage profile",
+        ? `${p.display_name || p.username} — Roomtone`
+        : "Roomtone profile",
       description:
-        p?.bio?.slice(0, 160) || "An expressive personal page on LoudPage.",
+        p?.bio?.slice(0, 160) || "An expressive personal page on Roomtone.",
     },
     robots: { index, follow: index },
   };
@@ -157,7 +157,7 @@ export default async function PublicProfile({
             {(p.display_name || p.username)[0].toUpperCase()}
           </div>
           <div>
-            <p className="eyebrow">LOUDPAGE / {p.username}</p>
+            <p className="eyebrow">ROOMTONE / {p.username}</p>
             <h1>{p.display_name || p.username}</h1>
             <p>
               {[p.city, p.mood && `mood: ${p.mood}`]
@@ -307,7 +307,7 @@ export default async function PublicProfile({
                 {theme.signal_status || "open to a quiet hello"}
               </p>
               <ShareSignal
-                title={`${p.display_name || p.username} on LoudPage`}
+                title={`${p.display_name || p.username} on Roomtone`}
                 text={`${theme.signal_line || p.mood || "quietly here"} · ${theme.signal_status || "open to a quiet hello"}`}
                 url={`https://synalepha.org/u/${p.username}`}
               />

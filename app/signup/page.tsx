@@ -3,7 +3,7 @@ import { AuthForm } from "@/components/AuthForm";
 import { Brand } from "@/components/Brand";
 import { DraftArrival } from "@/components/DraftArrival";
 export const metadata = {
-  title: "Create your LoudPage",
+  title: "Create your Roomtone",
   description:
     "Create an expressive personal page with intentional friendships and hard privacy boundaries.",
   alternates: { canonical: "/signup" },

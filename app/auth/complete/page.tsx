@@ -6,7 +6,7 @@ export default function Complete() {
       <Brand />
       <section>
         <p className="eyebrow">ACCOUNT CONFIRMATION</p>
-        <h1>Opening your LoudPage.</h1>
+        <h1>Opening your Roomtone.</h1>
         <AuthComplete />
       </section>
     </main>

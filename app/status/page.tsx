@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Brand } from "@/components/Brand";
 export const metadata = {
-  title: "Product Status — LoudPage",
+  title: "Product Status — Roomtone",
   description:
-    "What works, what is limited, and what is not launched in the LoudPage beta.",
+    "What works, what is limited, and what is not launched in the Roomtone beta.",
   alternates: { canonical: "/status" },
   openGraph: { url: "/status" },
 };
@@ -47,7 +47,12 @@ const systems = [
   [
     "Page composer",
     "Beta",
-    "Direct-on-canvas pre-signup editing, responsive themes, draft recovery, and visible audience state",
+    "Direct editing, photo-strip preview, notes, stickers, doodles, mixtapes, per-object audience, reorder, Calm, Reading Comfort, Low Data, and local recovery",
+  ],
+  [
+    "Spanish",
+    "Limited beta",
+    "The pre-signup object creator can switch between English and Spanish; account, safety, and recovery localization remains in progress",
   ],
 ];
 export default function Status() {
@@ -71,7 +76,7 @@ export default function Status() {
           What doesn’t yet.
         </h1>
         <p className="lede">
-          A launch boundary for LoudPage’s private beta. “Not launched” means
+          A launch boundary for Roomtone’s private beta. “Not launched” means
           there is no decorative dead button pretending otherwise.
         </p>
         <div className="status-list">

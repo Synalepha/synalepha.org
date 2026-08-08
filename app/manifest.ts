@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "LoudPage",
-    short_name: "LoudPage",
+    name: "Roomtone",
+    short_name: "Roomtone",
     description:
       "Expressive personal pages, intentional friendships, chronological updates.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f6f1e7",
-    theme_color: "#0b0d20",
+    background_color: "#f4e8d2",
+    theme_color: "#171522",
     icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }

@@ -44,7 +44,7 @@ export async function GET() {
   return new Response(body, {
     headers: {
       "content-type": "application/json; charset=utf-8",
-      "content-disposition": `attachment; filename="loudpage-export-${new Date().toISOString().slice(0, 10)}.json"`,
+      "content-disposition": `attachment; filename="roomtone-export-${new Date().toISOString().slice(0, 10)}.json"`,
       "cache-control": "private, no-store",
     },
   });

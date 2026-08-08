@@ -4,7 +4,7 @@ import { Brand } from "@/components/Brand";
 import { ResendConfirmation } from "@/components/ResendConfirmation";
 import { PasswordRecovery } from "@/components/PasswordRecovery";
 export const metadata = {
-  title: "Log in — LoudPage",
+  title: "Log in — Roomtone",
   robots: { index: false, follow: false },
 };
 export default async function Login({
@@ -32,7 +32,7 @@ export default async function Login({
         <PasswordRecovery />
         <ResendConfirmation />
         <p className="new-account-link">
-          Never made an account? <Link href="/signup">Create a LoudPage</Link>
+          Never made an account? <Link href="/signup">Create a Roomtone</Link>
         </p>
       </section>
     </main>

@@ -48,7 +48,7 @@ export default async function Account() {
           <h2>Device safety</h2>
           <p>
             Think an old phone, shared computer, or forgotten browser is still
-            signed in? End every LoudPage session at once.
+            signed in? End every Roomtone session at once.
           </p>
           <form action={signOutEverywhere}>
             <button className="secondary-button">

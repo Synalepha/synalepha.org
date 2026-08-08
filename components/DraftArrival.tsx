@@ -5,7 +5,7 @@ export function DraftArrival() {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     const timer = window.setTimeout(
-      () => setReady(Boolean(localStorage.getItem("loudpage-disposable-page"))),
+      () => setReady(Boolean(localStorage.getItem("roomtone-page-draft-v1") || localStorage.getItem("loudpage-disposable-page"))),
       0,
     );
     return () => window.clearTimeout(timer);

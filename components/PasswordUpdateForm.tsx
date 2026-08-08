@@ -100,7 +100,7 @@ export function PasswordUpdateForm() {
     setState({
       ready: true,
       error: "",
-      success: "Password updated. Opening your LoudPage…",
+      success: "Password updated. Opening your Roomtone…",
       pending: false,
     });
     window.setTimeout(() => router.replace("/home"), 500);

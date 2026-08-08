@@ -3,12 +3,9 @@ export function Brand({ href = "/" }: { href?: string }) {
   return (
     <Link className="brand" href={href}>
       <span className="brand-mark" aria-hidden="true">
-        LP
+        R<span>·</span>
       </span>
-      <span>
-        <i>loud</i>
-        <b>page</b>
-      </span>
+      <b>roomtone</b>
     </Link>
   );
 }

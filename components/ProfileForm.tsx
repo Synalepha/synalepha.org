@@ -8,7 +8,7 @@ import {
 } from "react";
 import { updateProfile, type AuthState } from "@/app/actions";
 const initial: AuthState = { error: "", success: "" };
-const draftKey = "loudpage-profile-draft-v1";
+const draftKey = "roomtone-profile-draft-v1";
 type Theme = {
   preset?: string;
   font?: string;

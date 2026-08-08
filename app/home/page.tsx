@@ -38,7 +38,7 @@ export default async function Home() {
               "Y")[0].toUpperCase()}
           </div>
           <p className="eyebrow">YOUR PAGE</p>
-          <h2>{profile?.display_name || "Your LoudPage"}</h2>
+          <h2>{profile?.display_name || "Your Roomtone"}</h2>
           <p className="mood-line">
             {profile?.mood
               ? `mood: ${profile.mood}`

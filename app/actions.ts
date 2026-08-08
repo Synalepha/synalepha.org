@@ -39,7 +39,7 @@ export async function signUp(_: unknown, form: FormData) {
       (365.2425 * 86400000),
   );
   if (age < 13)
-    return { error: "LoudPage is for people age 13 and older.", success: "" };
+    return { error: "Roomtone is for people age 13 and older.", success: "" };
   const supabase = createEmailAuthClient();
   const origin = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const { email, password, birth_date } = parsed.data;
@@ -68,7 +68,7 @@ export async function signUp(_: unknown, form: FormData) {
     };
   return {
     success:
-      "Account created. Check your email for a LoudPage confirmation link. Your page and future activity stay attached to this one account.",
+      "Account created. Check your email for a Roomtone confirmation link. Your page and future activity stay attached to this one account.",
     error: "",
   };
 }

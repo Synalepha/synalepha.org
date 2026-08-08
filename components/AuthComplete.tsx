@@ -45,7 +45,7 @@ export function AuthComplete() {
       });
       if (!verified.ok) {
         setError(
-          "Your email was confirmed, but LoudPage could not save the sign-in session. Please log in with the password you created.",
+          "Your email was confirmed, but Roomtone could not save the sign-in session. Please log in with the password you created.",
         );
         return;
       }

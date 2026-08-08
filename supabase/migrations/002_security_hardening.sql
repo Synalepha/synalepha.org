@@ -1,4 +1,4 @@
--- LoudPage authorization hardening. This migration preserves existing rows.
+-- Roomtone authorization hardening. This migration preserves existing rows.
 
 create or replace function public.is_admin(check_user uuid default auth.uid())
 returns boolean language sql stable security definer set search_path = public
