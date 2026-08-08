@@ -36,6 +36,7 @@ export function DemoProfile() {
           <div className="photo-art" role="img" aria-label="Abstract example photograph in violet and cyan tones"><span>12:07 AM</span></div>
           <div><p className="eyebrow">A NOTE</p><h2>The city looks kinder after the rain.</h2><p>Neon in the puddles. The train arriving exactly when it felt like it never would.</p></div>
         </section>
+        <p className="maya-margin-note">keep the blurry ones. they remember more.</p>
 
         <div className="profile-columns">
           <section className="page-module"><div className="module-title"><span>MY PEOPLE</span><i>MUTUAL</i></div><div className="circle-grid">{people.map(([name, letter]) => <div className="demo-friend" key={name}><div>{letter}</div><b>{name}</b></div>)}</div></section>

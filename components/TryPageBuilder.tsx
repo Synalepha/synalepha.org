@@ -3,10 +3,10 @@ import Link from "next/link";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 
 const themes = {
-  electric: { label: "Electric", accent: "#7c5cff", shadow: "#19d7ff" },
-  midnight: { label: "Midnight", accent: "#ff4fa3", shadow: "#19d7ff" },
-  sunset: { label: "Sunset", accent: "#ff725e", shadow: "#ffd84a" },
-  paper: { label: "Paper", accent: "#46513f", shadow: "#d6b45a" },
+  electric: { label: "Neon bedroom", accent: "#7c5cff", shadow: "#19d7ff" },
+  midnight: { label: "Midnight mixtape", accent: "#ff4fa3", shadow: "#19d7ff" },
+  sunset: { label: "Disposable sunset", accent: "#ff725e", shadow: "#ffd84a" },
+  paper: { label: "Paper letter", accent: "#46513f", shadow: "#d6b45a" },
 } as const;
 type ThemeKey = keyof typeof themes;
 
@@ -65,7 +65,7 @@ export function TryPageBuilder() {
       </header>
 
       <div className="canvas-tools" aria-label="Page style">
-        <span>Choose a feeling</span>
+        <span>Choose the room your page lives in</span>
         <div>
           {Object.entries(themes).map(([key, value]) => (
             <button
@@ -108,6 +108,8 @@ export function TryPageBuilder() {
             <input value={bio} onChange={(e) => setBio(e.target.value)} maxLength={80} aria-label="Short bio" />
           </label>
         </section>
+
+        <p className="canvas-handwritten" aria-hidden="true">made by a person, not assembled by a feed</p>
 
         <section className="right-now" aria-labelledby="right-now-title">
           <div>

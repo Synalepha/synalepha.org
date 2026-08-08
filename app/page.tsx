@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Brand } from "@/components/Brand";
 import { TryPageBuilder } from "@/components/TryPageBuilder";
+import { TimeCapsule } from "@/components/TimeCapsule";
 export const metadata = {
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
@@ -39,8 +40,9 @@ export default function Landing() {
               feel like <em>you.</em>
             </h1>
             <p className="lede">
-              Build a personal page. Share it with your people. See life in
-              order—not through an algorithm.
+              Make a page the way your bedroom door used to feel—songs,
+              scraps, moods, and the people you chose. Life arrives in order.
+              Nothing decides what mattered for you.
             </p>
             <div className="hero-actions">
               <Link className="primary" href="/signup">
@@ -87,8 +89,8 @@ export default function Landing() {
               </div>
               <div className="top-eight">
                 <div>
-                  <b>CHOSEN PEOPLE</b>
-                  <span>optional module</span>
+                  <b>THE PEOPLE I CALL</b>
+                  <span>not an audience</span>
                 </div>
                 <div className="faces">
                   {people.map(([name, letter]) => (
@@ -118,32 +120,33 @@ export default function Landing() {
           <span>✦ NO FOLLOWER CONTEST</span>
         </section>
         <TryPageBuilder />
+        <TimeCapsule />
         <section id="how" className="features">
           <p className="eyebrow">PEOPLE, NOT AUDIENCES</p>
-          <h2>A social place built at human scale.</h2>
+          <h2>Small enough to mean something.</h2>
           <div className="feature-grid">
             <article>
               <span>01</span>
               <h3>Make it unmistakably yours.</h3>
               <p>
-                Start with a style. Add a song, pin a mood, tell your story,
-                and change your mind tomorrow.
+                Put the song on. Tape the note to the wall. Keep the blurry
+                photo. Change everything when you change.
               </p>
             </article>
             <article>
               <span>02</span>
               <h3>Keep friendship mutual.</h3>
               <p>
-                Connect with people you choose—not followers to collect.
-                Messages open only after both people say yes.
+                Make room for the names you would notice missing. A connection
+                begins only after both people say yes.
               </p>
             </article>
             <article>
               <span>03</span>
               <h3>See what happened.</h3>
               <p>
-                Updates arrive newest-first. No outrage ranking, paid reach,
-                or pressure to perform.
+                Friday night stays before Saturday morning. Nothing rearranges
+                your memories to make them perform.
               </p>
             </article>
           </div>
@@ -170,10 +173,11 @@ export default function Landing() {
         </section>
         <section className="closing-cta" aria-labelledby="closing-title">
           <p className="eyebrow">YOUR PAGE IS WAITING</p>
-          <h2 id="closing-title">The web has room for you again.</h2>
+          <h2 id="closing-title">You do not miss the old technology.</h2>
           <p>
-            No follower contest. No outrage machine. No pressure to perform.
-            Just a page that sounds, looks, and feels like yours.
+            You miss the feeling that something online was yours. A room with
+            a song playing, a note on the wall, and people who knocked before
+            they came in. That feeling can exist again.
           </p>
           <Link className="primary" href="/signup">
             Make my LoudPage

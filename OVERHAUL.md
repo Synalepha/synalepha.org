@@ -57,3 +57,21 @@ The database and interface contracts for safe images are implemented, but the
 upload delivery path and external scanning worker remain unlaunched. Product
 Status says this directly. A decorative upload button must never imply that an
 unprocessed file is safe or publicly available.
+
+## Sensory layer
+
+The second overhaul pass makes nostalgia experiential rather than decorative:
+
+- The Time Capsule presents three specific, interactive memories: a 1999 away
+  message, a 2003 burned CD, and a 2007 photo-booth strip.
+- Each memory is framed as a private object made for someone, not content made
+  for distribution.
+- A short synthesized sound may be played only after explicit activation. It
+  never autoplays, loads no media, and stores nothing.
+- Page environments are named and rendered as Neon Bedroom, Midnight Mixtape,
+  Disposable Sunset, and Paper Letter.
+- Paper grain, ruled lines, scan texture, imperfect rotations, ink-like notes,
+  and object shadows create tactility without using inaccessible image text.
+- Reduced-motion preferences remove entrance animation and positional motion.
+- The emotional thesis is explicit: LoudPage does not rewind technology; it
+  restores the feeling that a page was made by and belonged to a person.
