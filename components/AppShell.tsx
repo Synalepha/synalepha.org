@@ -25,9 +25,9 @@ export function AppShell({
       <header className="appbar">
         <Brand href="/home" />
         <nav aria-label="Primary">
-          <Link href="/home">Neighborhood</Link>
-          <Link href="/discover">Discover</Link>
-          <Link href="/friends">Friends</Link>
+          <Link href="/home">My people</Link>
+          <Link href="/discover">Find people</Link>
+          <Link href="/friends">Connections</Link>
           <Link href="/messages">Messages</Link>
         </nav>
         <div className="account-menu">
@@ -53,10 +53,10 @@ export function AppShell({
           <span>⌂</span>Home
         </Link>
         <Link href="/discover">
-          <span>✦</span>Discover
+          <span>✦</span>Find
         </Link>
         <Link href="/friends">
-          <span>◎</span>Friends
+          <span>◎</span>People
         </Link>
         <Link href="/messages">
           <span>✉</span>Messages

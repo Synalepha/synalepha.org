@@ -58,39 +58,39 @@ export default async function Home() {
         <section className="feed">
           <section className="weekly-return">
             <div>
-              <p className="eyebrow">YOUR PEOPLE · NO RANKING</p>
-              <h2>A small week on purpose.</h2>
+              <p className="eyebrow">WHAT CHANGED WITH YOUR PEOPLE</p>
+              <h2>The people you would actually miss.</h2>
             </div>
             <div>
               <b>{bulletins?.length || 0}</b>
-              <span>newest-first updates</span>
+              <span>changes from your people</span>
             </div>
             <div>
-              <b>∞</b>
-              <span>minutes without algorithm bait</span>
+              <b>0</b>
+              <span>popularity scores</span>
             </div>
             <Link href="/friends">Choose who belongs →</Link>
           </section>
           <div className="section-title">
             <div>
-              <p className="eyebrow">YOUR NEIGHBORHOOD</p>
-              <h1>What’s happening</h1>
+              <p className="eyebrow">LIFE, IN THE ORDER IT HAPPENED</p>
+              <h1>From your people</h1>
             </div>
             <span className="chronological">
               ↓ chronological · no suggested posts
             </span>
           </div>
           <form action={postBulletin} className="composer">
-            <label htmlFor="bulletin">Post a bulletin</label>
+            <label htmlFor="bulletin">What changed for you?</label>
             <textarea
               id="bulletin"
               name="body"
               maxLength={2000}
-              placeholder="What deserves a little space today?"
+              placeholder="A small note for the people you chose…"
               required
             />
             <div>
-              <small>Visible to signed-in members · 2,000 characters</small>
+              <small>Shared with your people · 2,000 characters</small>
               <button className="primary">Post</button>
             </div>
           </form>
@@ -118,9 +118,9 @@ export default async function Home() {
           ) : (
             <div className="empty">
               <span>✦</span>
-              <b>Your neighborhood is quiet.</b>
-              <p>Write the first bulletin or discover someone new.</p>
-              <Link href="/discover">Meet the neighborhood</Link>
+              <b>You are caught up.</b>
+              <p>Nothing new from your people. This is a good place to stop.</p>
+              <Link href="/settings">Change something on my page</Link>
             </div>
           )}
         </section>
@@ -132,16 +132,13 @@ export default async function Home() {
                 Write your About Me
               </li>
               <li>Find people you know</li>
-              <li>Choose your inner circle</li>
+              <li>Choose your people</li>
               <li>Post something honest</li>
             </ol>
           </div>
           <div className="rail-card glow-card">
-            <b>No ranking games.</b>
-            <p>
-              Your neighborhood is newest-first. LoudPage does not sell a
-              popularity score.
-            </p>
+            <b>You can finish.</b>
+            <p>When you have seen what changed, the feed ends.</p>
           </div>
         </aside>
       </div>

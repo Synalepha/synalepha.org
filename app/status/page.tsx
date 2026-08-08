@@ -20,6 +20,16 @@ const systems = [
   ],
   ["Friendships", "Operational", "Mutual requests with adult/minor separation"],
   [
+    "Right Now",
+    "Beta",
+    "Inline feeling, note, song, audience, draft persistence, and share-ready presentation",
+  ],
+  [
+    "My People circles",
+    "Foundation",
+    "Database model and accepted-friend boundaries are ready; circle management is not yet exposed",
+  ],
+  [
     "Messages",
     "Limited beta",
     "Accepted-friend requirement is enforced; interface remains intentionally narrow",
@@ -27,7 +37,7 @@ const systems = [
   [
     "Media uploads",
     "Not launched",
-    "Hidden until scanning and moderation pipeline is production-ready",
+    "Quarantine, processing, metadata-stripping, alt-text, and approval guards are defined; upload delivery and scanning workers are not launched",
   ],
   [
     "Reports",
@@ -37,7 +47,7 @@ const systems = [
   [
     "Page composer",
     "Beta",
-    "Draft recovery, curated layouts, themes, signal, and exact saved preview",
+    "Direct-on-canvas pre-signup editing, responsive themes, draft recovery, and visible audience state",
   ],
 ];
 export default function Status() {

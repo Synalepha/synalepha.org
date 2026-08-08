@@ -2,192 +2,51 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Brand } from "@/components/Brand";
-const friends = [
-  ["Jules", "J"],
-  ["Dani", "D"],
-  ["Kris", "K"],
-  ["Ari", "A"],
-];
+
+const people = [["Jules", "J"], ["Dani", "D"]];
 const themes = ["midnight", "sunset", "paper"] as const;
+
 export function DemoProfile() {
-  const [theme, setTheme] = useState<(typeof themes)[number]>("midnight"),
-    [mobile, setMobile] = useState(false),
-    [playing, setPlaying] = useState(false),
-    [audience, setAudience] = useState<"friends" | "public">("friends"),
-    [expanded, setExpanded] = useState(false);
+  const [theme, setTheme] = useState<(typeof themes)[number]>("midnight");
+  const [playing, setPlaying] = useState(false);
   return (
-    <div
-      className={`public-profile theme-${theme} font-serif density-spacious demo-lab ${mobile ? "demo-mobile" : ""}`}
-    >
+    <div className={`public-profile theme-${theme} font-serif density-spacious`}>
       <header className="topbar profile-topbar">
         <Brand />
-        <nav>
-          <Link href="/#try-builder">Make a page</Link>
-          <Link href="/">Why LoudPage</Link>
-          <Link className="nav-cta" href="/signup">
-            Make yours
-          </Link>
-        </nav>
+        <nav><Link href="/">Why LoudPage</Link><Link className="nav-cta" href="/#try-builder">Make yours</Link></nav>
       </header>
-      <div className="demo-banner">
-        <b>STAGED PRODUCT LAB</b>
-        <span>
-          Every control below works. Maya is a demonstration—not a real member
-          or invented social proof.
-        </span>
-        <Link href="/signup">Claim your own</Link>
-      </div>
-      <div className="demo-labbar" aria-label="Demo controls">
-        <div>
-          <b>TOUCH THE PRODUCT</b>
-          <span>Nothing here changes a real account.</span>
-        </div>
-        <label>
-          Theme
-          <select
-            value={theme}
-            onChange={(e) => setTheme(e.target.value as typeof theme)}
-          >
-            {themes.map((item) => (
-              <option value={item} key={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Audience
-          <select
-            value={audience}
-            onChange={(e) => setAudience(e.target.value as typeof audience)}
-          >
-            <option value="friends">Friends only</option>
-            <option value="public">Everyone</option>
-          </select>
-        </label>
-        <button onClick={() => setMobile((v) => !v)} aria-pressed={mobile}>
-          {mobile ? "Desktop frame" : "Mobile frame"}
-        </button>
-      </div>
-      <main className="public-page">
+      <div className="example-banner"><b>EXAMPLE PAGE</b><span>Maya is fictional. The interactions are real.</span></div>
+      <main className="public-page human-demo">
         <section className="profile-hero">
           <div className="profile-avatar">M</div>
-          <div>
-            <p className="eyebrow">LOUDPAGE / MAYA</p>
-            <h1>Maya ☻</h1>
-            <p>Chicago · mood: electric</p>
-          </div>
-          <span className="secondary-button">
-            {audience === "friends" ? "Friends only" : "Everyone"}
-          </span>
+          <div><p className="eyebrow">LOUDPAGE / MAYA</p><h1>Maya ☻</h1><p>Chicago · designer · night owl</p></div>
+          <span className="audience-chip">● My people</span>
         </section>
-        <section className={`profile-player ${playing ? "is-playing" : ""}`}>
-          <button
-            onClick={() => setPlaying((v) => !v)}
-            aria-label={
-              playing
-                ? "Pause profile song preview"
-                : "Play profile song preview"
-            }
-          >
-            {playing ? "Ⅱ" : "▶"}
+
+        <section className="right-now demo-right-now">
+          <div><p className="eyebrow">RIGHT NOW</p><span>Friday · 11:42 PM</span></div>
+          <strong>electric after midnight</strong>
+          <p>Developing disposable-camera photos and trying not to check the time.</p>
+          <button onClick={() => setPlaying((value) => !value)} aria-pressed={playing}>
+            {playing ? "Ⅱ Pause visual preview" : "▶ Midnight Receiver — Neon Exit"}
           </button>
-          <div>
-            <small>PROFILE SONG · SAFE 8-SECOND DEMO</small>
-            <b>Midnight Receiver — Neon Exit</b>
-          </div>
-          <i>{playing ? "playing silent visual preview" : "never autoplays"}</i>
         </section>
+
+        <section className="demo-photo page-module">
+          <div className="photo-art" role="img" aria-label="Abstract example photograph in violet and cyan tones"><span>12:07 AM</span></div>
+          <div><p className="eyebrow">A NOTE</p><h2>The city looks kinder after the rain.</h2><p>Neon in the puddles. The train arriving exactly when it felt like it never would.</p></div>
+        </section>
+
         <div className="profile-columns">
-          <div>
-            <section className="page-module">
-              <div className="module-title">
-                <span>ABOUT ME</span>
-                <i>01</i>
-              </div>
-              <p className="profile-bio">
-                designer, night owl, collector of disposable cameras. building a
-                smaller internet with better lighting.
-                {expanded
-                  ? " currently learning risograph printing, walking without headphones, and making websites that remember people have nervous systems."
-                  : ""}
-              </p>
-              <button
-                className="text-button"
-                onClick={() => setExpanded((v) => !v)}
-              >
-                {expanded ? "Show less" : "Read the rest →"}
-              </button>
-            </section>
-            <section className="page-module">
-              <div className="module-title">
-                <span>GUESTBOOK</span>
-                <i>
-                  {audience === "friends" ? "FRIENDS ONLY" : "VISIBLE MEMBERS"}
-                </i>
-              </div>
-              <div className="empty compact">
-                <b>Boundaries are part of the design.</b>
-                <p>
-                  {audience === "friends"
-                    ? "Only accepted friends can sign this guestbook."
-                    : "Signed-in members who can see this page may leave a note."}
-                </p>
-              </div>
-            </section>
-          </div>
-          <aside>
-            <section className="page-module circle-module">
-              <div className="module-title">
-                <span>CHOSEN PEOPLE</span>
-                <i>MUTUALS · OPTIONAL</i>
-              </div>
-              <div className="circle-grid">
-                {friends.map(([name, letter]) => (
-                  <button
-                    className="demo-friend"
-                    key={name}
-                    title={`${name} is a staged mutual friend`}
-                  >
-                    <div>{letter}</div>
-                    <b>{name}</b>
-                  </button>
-                ))}
-              </div>
-            </section>
-            <section className="page-module page-signal-card">
-              <div className="module-title">
-                <span>PAGE SIGNAL</span>
-                <i>LIVE</i>
-              </div>
-              <div className="signal-orbit" aria-hidden="true">
-                <i />
-                <i />
-                <i />
-              </div>
-              <strong>electric after midnight</strong>
-              <p>♫ Midnight Receiver · ☻ open to a quiet hello</p>
-              <button
-                onClick={() =>
-                  navigator.clipboard?.writeText(
-                    "Maya is electric after midnight — synalepha.org/u/maya",
-                  )
-                }
-              >
-                Copy signal card
-              </button>
-            </section>
-          </aside>
+          <section className="page-module"><div className="module-title"><span>MY PEOPLE</span><i>MUTUAL</i></div><div className="circle-grid">{people.map(([name, letter]) => <div className="demo-friend" key={name}><div>{letter}</div><b>{name}</b></div>)}</div></section>
+          <section className="page-module"><div className="module-title"><span>GUESTBOOK</span><i>EXAMPLE NOTE</i></div><blockquote>“The rain photo feels like a song.”<footer>— Jules</footer></blockquote></section>
         </div>
-        <section className="demo-proof">
-          <b>WHAT THIS DEMO PROVES</b>
-          <span>Theme changes</span>
-          <span>Audience language</span>
-          <span>Responsive frame</span>
-          <span>Expandable modules</span>
-          <span>Non-autoplay media</span>
-          <span>Shareable signal</span>
+
+        <section className="demo-style-switcher" aria-label="Restyle this example">
+          <span>See this page differently</span>
+          {themes.map((item) => <button key={item} aria-pressed={theme === item} onClick={() => setTheme(item)}>{item}</button>)}
         </section>
+        <section className="example-cta"><p>A place that changes when you do.</p><Link className="primary" href="/#try-builder">Touch a page and make it yours →</Link></section>
       </main>
     </div>
   );

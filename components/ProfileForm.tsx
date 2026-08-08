@@ -211,7 +211,7 @@ export function ProfileForm({
             />
           </label>
           <label>
-            Page Signal headline
+            Right Now feeling
             <input
               name="signal_line"
               defaultValue={
@@ -221,11 +221,11 @@ export function ProfileForm({
               placeholder="electric after midnight"
             />
             <span className="field-hint">
-              The signature line people see when your page is shared.
+              The feeling people see when your page is shared.
             </span>
           </label>
           <label>
-            Page Signal status
+            A note from now
             <input
               name="signal_status"
               defaultValue={theme.signal_status || "open to a quiet hello"}

@@ -19,14 +19,14 @@ export function AuthForm({
   return (
     <form action={formAction} className="auth-form">
       <label>
-        Email
+        Where should we save your page?
         <input name="email" type="email" required autoComplete="email" />
       </label>
       {mode === "signup" && (
         <label>
-          Date of birth{" "}
+          Your date of birth{" "}
           <span className="field-hint">
-            Used for age-appropriate safety. Never shown publicly.
+            This sets the right safety boundaries. It is never shown on your page.
           </span>
           <input
             name="birth_date"
@@ -75,12 +75,11 @@ export function AuthForm({
           ? "Working…"
           : mode === "login"
             ? "Log in"
-            : "Create my account"}
+            : "Save my page"}
       </button>
       {mode === "signup" && (
         <p className="account-note">
-          One email, one account. We preserve existing accounts and never
-          overwrite their pages.
+          Already have an account? We will never replace its page.
         </p>
       )}
     </form>

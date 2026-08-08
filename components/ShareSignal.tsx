@@ -21,7 +21,7 @@ export function ShareSignal({
   }
   return (
     <button type="button" onClick={share}>
-      {copied ? "Signal copied ✓" : "Share this signal"}
+      {copied ? "Your card is ready ✓" : "Give this to someone"}
     </button>
   );
 }

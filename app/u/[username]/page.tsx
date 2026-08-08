@@ -19,13 +19,13 @@ export async function generateMetadata({
   const { username } = await params;
   if (username === "maya")
     return {
-      title: "Maya — staged LoudPage profile",
-      description: "Explore a working staged LoudPage profile.",
+      title: "Maya — an example LoudPage",
+      description: "See a personal page that changes when its person does.",
       alternates: { canonical: "/u/maya" },
       openGraph: {
         url: "/u/maya",
-        title: "Maya — staged LoudPage profile",
-        description: "Explore a working staged LoudPage profile.",
+        title: "Maya — an example LoudPage",
+        description: "See a personal page that changes when its person does.",
       },
       robots: { index: true, follow: true },
     };
@@ -293,22 +293,22 @@ export default async function PublicProfile({
             )}
             <section className="page-module page-signal-card">
               <div className="module-title">
-                <span>PAGE SIGNAL</span>
-                <i>LIVE</i>
+              <span>RIGHT NOW</span>
+              <i>UPDATED RECENTLY</i>
               </div>
               <div className="signal-orbit" aria-hidden="true">
                 <i />
                 <i />
                 <i />
               </div>
-              <strong>{theme.signal_line || p.mood || "quietly online"}</strong>
+              <strong>{theme.signal_line || p.mood || "quietly here"}</strong>
               <p>
                 ♫ {p.profile_song_title || "no song selected"} · ☻{" "}
                 {theme.signal_status || "open to a quiet hello"}
               </p>
               <ShareSignal
                 title={`${p.display_name || p.username} on LoudPage`}
-                text={`${theme.signal_line || p.mood || "quietly online"} · ${theme.signal_status || "open to a quiet hello"}`}
+                text={`${theme.signal_line || p.mood || "quietly here"} · ${theme.signal_status || "open to a quiet hello"}`}
                 url={`https://synalepha.org/u/${p.username}`}
               />
             </section>

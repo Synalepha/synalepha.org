@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AuthForm } from "@/components/AuthForm";
 import { Brand } from "@/components/Brand";
+import { DraftArrival } from "@/components/DraftArrival";
 export const metadata = {
   title: "Create your LoudPage",
   description:
@@ -15,18 +16,17 @@ export default function Signup() {
     <main className="auth-page">
       <Brand />
       <section>
-        <p className="eyebrow">ONE PERSON · ONE ACCOUNT</p>
-        <h1>Your page starts here.</h1>
+        <p className="eyebrow">SAVE YOUR PAGE</p>
+        <h1>Make it yours.</h1>
+        <DraftArrival />
         <p className="auth-intro">
-          Create one private home for your page and activity. Existing accounts
-          are preserved, never replaced. Under-18 pages begin Only me, cannot
-          become public, and are separated from adult discovery and friendship
-          requests.
+          Start with a private account. You choose when your page is ready and
+          who gets to see it.
         </p>
         <div className="signup-steps" aria-label="Account setup progress">
-          <b>1 · Account</b>
-          <span>2 · Shape your page</span>
-          <span>3 · Preview &amp; publish</span>
+          <b>1 · Save</b>
+          <span>2 · Choose your people</span>
+          <span>3 · Share when ready</span>
         </div>
         <AuthForm
           mode="signup"

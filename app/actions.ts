@@ -395,6 +395,41 @@ export async function removeFriend(form: FormData) {
   if (error) throw new Error("That friendship could not be removed.");
   revalidatePath("/friends");
 }
+export async function addToMyPeople(form: FormData) {
+  const friendId = z.uuid().parse(form.get("user_id"));
+  const { supabase, user } = await requireUser();
+  const { data: rows } = await supabase
+    .from("top_friends")
+    .select("position")
+    .eq("owner_id", user.id)
+    .order("position");
+  if ((rows?.length || 0) >= 8)
+    throw new Error("My People can hold up to eight close connections.");
+  const used = new Set((rows || []).map((row) => row.position));
+  const position = Array.from({ length: 8 }, (_, index) => index + 1).find(
+    (candidate) => !used.has(candidate),
+  );
+  const { error } = await supabase.from("top_friends").insert({
+    owner_id: user.id,
+    friend_id: friendId,
+    position,
+  });
+  if (error) throw new Error("That person could not be added to My People.");
+  revalidatePath("/friends");
+  revalidatePath("/profile");
+}
+export async function removeFromMyPeople(form: FormData) {
+  const friendId = z.uuid().parse(form.get("user_id"));
+  const { supabase, user } = await requireUser();
+  const { error } = await supabase
+    .from("top_friends")
+    .delete()
+    .eq("owner_id", user.id)
+    .eq("friend_id", friendId);
+  if (error) throw new Error("That person could not be removed from My People.");
+  revalidatePath("/friends");
+  revalidatePath("/profile");
+}
 export async function postProfileComment(form: FormData) {
   const parsed = z
     .object({

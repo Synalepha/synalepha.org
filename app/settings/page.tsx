@@ -31,16 +31,16 @@ export default async function Settings() {
   return (
     <AppShell profile={p}>
       <div className="settings-page">
-        <p className="eyebrow">YOUR BACKSTAGE · CREATION PATH {completed}/5</p>
-        <h1>Shape your page</h1>
+        <p className="eyebrow">YOUR PAGE · {completed}/5 READY</p>
+        <h1>Change it where it lives.</h1>
         <p className="lede">
-          Choose a template, tune its voice, set hard boundaries, and preview
-          exactly what other people will see.
+          Keep your page current, choose who can see it, and preview exactly
+          what your people will receive.
         </p>
         <ol className="onboarding-path" aria-label="Page creation progress">
           <li className="done">Claim identity</li>
           <li className={p.bio ? "done" : ""}>Tell your story</li>
-          <li className={p.mood ? "done" : ""}>Set Page Signal</li>
+          <li className={p.mood ? "done" : ""}>Say what is happening now</li>
           <li className={p.theme ? "done" : ""}>Compose the page</li>
           <li>Preview &amp; publish</li>
         </ol>

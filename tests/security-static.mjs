@@ -6,6 +6,7 @@ const migrations = [
   "002_security_hardening.sql",
   "003_age_aware_safety.sql",
   "004_visible_safety_and_customization.sql",
+  "005_living_canvas.sql",
 ]
   .map((name) =>
     fs.readFileSync(
@@ -31,10 +32,14 @@ const tables = [
   "notifications",
   "reports",
   "admins",
+  "right_now",
+  "circles",
+  "circle_members",
 ];
 for (const table of tables)
   assert(
-    migrations.includes(`alter table ${table} enable row level security`),
+    migrations.includes(`alter table ${table} enable row level security`) ||
+      migrations.includes(`alter table public.${table} enable row level security`),
     `${table} is missing RLS`,
   );
 for (const fn of [
@@ -55,6 +60,10 @@ for (const rule of [
   "public.are_friends(auth.uid(),other_user)",
   "moderation_state='pending'",
   "reporter_id=auth.uid()",
+  "public.are_friends(auth.uid(),member_id)",
+  "new.processing_state<>'ready'",
+  "not new.metadata_stripped",
+  "coalesce(trim(new.alt_text),'')=''",
 ])
   assert(migrations.includes(rule), `missing authorization invariant: ${rule}`);
 assert(

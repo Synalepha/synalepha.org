@@ -1,178 +1,146 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
+
 const themes = {
   electric: { label: "Electric", accent: "#7c5cff", shadow: "#19d7ff" },
   midnight: { label: "Midnight", accent: "#ff4fa3", shadow: "#19d7ff" },
   sunset: { label: "Sunset", accent: "#ff725e", shadow: "#ffd84a" },
   paper: { label: "Paper", accent: "#46513f", shadow: "#d6b45a" },
 } as const;
-const starters = ["About me", "Status", "Profile song", "Chosen people"];
 type ThemeKey = keyof typeof themes;
+
 export function TryPageBuilder() {
-  const [name, setName] = useState("Maya"),
-    [headline, setHeadline] = useState("night owl · camera collector"),
-    [mood, setMood] = useState("electric"),
-    [theme, setTheme] = useState<ThemeKey>("midnight"),
-    [modules, setModules] = useState(starters),
-    [saved, setSaved] = useState(false),
-    [mobile, setMobile] = useState(false);
+  const [name, setName] = useState("Maya");
+  const [bio, setBio] = useState("night owl · camera collector");
+  const [feeling, setFeeling] = useState("electric");
+  const [note, setNote] = useState("making a smaller internet with better lighting");
+  const [song, setSong] = useState("Midnight Receiver — Neon Exit");
+  const [theme, setTheme] = useState<ThemeKey>("midnight");
+  const [audience, setAudience] = useState<"private" | "people" | "anyone">("private");
+  const [saved, setSaved] = useState(false);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timer = window.setTimeout(() => {
       const raw = localStorage.getItem("loudpage-disposable-page");
       if (!raw) return;
       try {
         const d = JSON.parse(raw);
         setName(d.name || "Maya");
-        setHeadline(d.headline || "");
-        setMood(d.mood || "electric");
+        setBio(d.bio || d.headline || "");
+        setFeeling(d.feeling || d.mood || "electric");
+        setNote(d.note || "making a smaller internet with better lighting");
+        setSong(d.song || "Midnight Receiver — Neon Exit");
         setTheme(d.theme in themes ? d.theme : "midnight");
-        setModules(Array.isArray(d.modules) ? d.modules : starters);
+        setAudience(["private", "people", "anyone"].includes(d.audience) ? d.audience : "private");
       } catch {}
     }, 0);
-    return () => clearTimeout(timer);
+    return () => window.clearTimeout(timer);
   }, []);
+
   useEffect(() => {
     localStorage.setItem(
       "loudpage-disposable-page",
-      JSON.stringify({ name, headline, mood, theme, modules }),
+      JSON.stringify({ name, bio, feeling, note, song, theme, audience }),
     );
-    const show = setTimeout(() => setSaved(true), 0),
-      hide = setTimeout(() => setSaved(false), 900);
-    return () => {
-      clearTimeout(show);
-      clearTimeout(hide);
-    };
-  }, [name, headline, mood, theme, modules]);
-  const initials = useMemo(
-    () => name.trim().slice(0, 1).toUpperCase() || "Y",
-    [name],
-  );
-  function move(index: number, direction: -1 | 1) {
-    const next = [...modules],
-      target = index + direction;
-    if (target < 0 || target >= next.length) return;
-    [next[index], next[target]] = [next[target], next[index]];
-    setModules(next);
-  }
+    const show = window.setTimeout(() => setSaved(true), 0);
+    const hide = window.setTimeout(() => setSaved(false), 1000);
+    return () => { window.clearTimeout(show); window.clearTimeout(hide); };
+  }, [name, bio, feeling, note, song, theme, audience]);
+
+  const initial = useMemo(() => name.trim().slice(0, 1).toUpperCase() || "Y", [name]);
+  const audienceLabel = audience === "private" ? "Only me" : audience === "people" ? "My people" : "Anyone";
+
   return (
-    <section className="try-builder" id="try-builder">
-      <div className="builder-intro">
-        <p className="eyebrow">MAKE YOURS IN THREE MOVES</p>
-        <h2>Make your first page before you sign up.</h2>
-        <p>
-          Try everything here. Your private draft stays in this browser until
-          you choose to make it yours.
-        </p>
-        <p className="builder-step"><b>1</b><span><strong>Name it</strong> Say who you are right now.</span></p>
-        <div className="builder-fields">
-          <label>
-            Your name
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              maxLength={50}
-            />
-          </label>
-          <label>
-            Short bio
-            <input
-              value={headline}
-              onChange={(e) => setHeadline(e.target.value)}
-              maxLength={80}
-            />
-          </label>
-          <label>
-            Mood
-            <input
-              value={mood}
-              onChange={(e) => setMood(e.target.value)}
-              maxLength={40}
-            />
-          </label>
+    <section className="canvas-builder" id="try-builder">
+      <header className="canvas-intro">
+        <div>
+          <p className="eyebrow">TOUCH IT. MAKE IT YOURS.</p>
+          <h2>Your first page is already here.</h2>
+          <p>Tap the words and change them. Nothing is published until you decide.</p>
         </div>
-        <p className="builder-step"><b>2</b><span><strong>Shape it</strong> Choose a starting style.</span></p>
-        <fieldset>
-          <legend>Starting style</legend>
-          <div className="theme-choices">
-            {Object.entries(themes).map(([key, value]) => (
-              <button
-                type="button"
-                key={key}
-                aria-pressed={theme === key}
-                onClick={() => setTheme(key as ThemeKey)}
-                style={{ "--swatch": value.accent } as CSSProperties}
-              >
-                {value.label}
-              </button>
-            ))}
-          </div>
-        </fieldset>
-        <details className="builder-more">
-          <summary>Make it more yours</summary>
-          <div className="module-order">
-            <b>Arrange your page</b>
-            {modules.map((module, index) => (
-              <div key={module}>
-                <span aria-hidden="true">⠿</span>
-                <strong>{module}</strong>
-                <button onClick={() => move(index, -1)} disabled={index === 0} aria-label={`Move ${module} up`}>↑</button>
-                <button onClick={() => move(index, 1)} disabled={index === modules.length - 1} aria-label={`Move ${module} down`}>↓</button>
-              </div>
-            ))}
-          </div>
-        </details>
-        <p className="builder-step"><b>3</b><span><strong>See it live</strong> Preview it before anything is published.</span></p>
-        <div className="builder-actions">
-          <button
-            className="secondary-button"
-            onClick={() => setMobile((v) => !v)}
-          >
-            {mobile ? "Show desktop" : "Preview mobile"}
-          </button>
-          <Link className="primary" href="/signup">
-            Make it mine →
-          </Link>
-          <span role="status">{saved ? "Saved in this browser" : ""}</span>
+        <div className="canvas-save" role="status" aria-live="polite">
+          {saved ? "Private draft saved" : "Private browser draft"}
+        </div>
+      </header>
+
+      <div className="canvas-tools" aria-label="Page style">
+        <span>Choose a feeling</span>
+        <div>
+          {Object.entries(themes).map(([key, value]) => (
+            <button
+              type="button"
+              key={key}
+              aria-pressed={theme === key}
+              onClick={() => setTheme(key as ThemeKey)}
+              style={{ "--swatch": value.accent } as CSSProperties}
+            >
+              {value.label}
+            </button>
+          ))}
         </div>
       </div>
+
       <div
-        className={`disposable-preview ${mobile ? "is-mobile" : ""}`}
-        style={
-          {
-            "--demo-accent": themes[theme].accent,
-            "--demo-shadow": themes[theme].shadow,
-          } as CSSProperties
-        }
+        className={`living-canvas canvas-${theme}`}
+        style={{ "--demo-accent": themes[theme].accent, "--demo-shadow": themes[theme].shadow } as CSSProperties}
       >
-        <div className="windowbar">
-          <span>● ● ●</span>
-          <b>your future page</b>
+        <div className="canvas-topline">
+          <span>YOUR LOUDPAGE</span>
+          <label>
+            <span className="sr-only">Who can see this page</span>
+            <select value={audience} onChange={(event) => setAudience(event.target.value as typeof audience)}>
+              <option value="private">◉ Only me</option>
+              <option value="people">◉ My people</option>
+              <option value="anyone">◉ Anyone</option>
+            </select>
+          </label>
         </div>
-        <div className="disposable-identity">
-          <div>{initials}</div>
-          <p className="eyebrow">PRIVATE DRAFT</p>
-          <h3>{name || "Your name"}</h3>
-          <p>{headline || "Your short bio goes here"}</p>
-          <mark>mood: {mood || "unset"}</mark>
-        </div>
-        {modules.map((module, index) => (
-          <div className="disposable-module" key={module}>
-            <small>0{index + 1}</small>
-            <b>{module}</b>
-            <span>
-              {module === "Status"
-                ? "Here right now"
-                : module === "Profile song"
-                  ? "▶ nothing autoplays"
-                  : module === "Chosen people"
-                    ? "mutuals, not followers"
-                    : "write like a human"}
-            </span>
+
+        <section className="canvas-identity" aria-label="Identity">
+          <div className="canvas-avatar" aria-hidden="true">{initial}</div>
+          <label>
+            <span className="sr-only">Your name</span>
+            <input value={name} onChange={(e) => setName(e.target.value)} maxLength={50} aria-label="Your name" />
+          </label>
+          <label>
+            <span className="sr-only">Short bio</span>
+            <input value={bio} onChange={(e) => setBio(e.target.value)} maxLength={80} aria-label="Short bio" />
+          </label>
+        </section>
+
+        <section className="right-now" aria-labelledby="right-now-title">
+          <div>
+            <p className="eyebrow" id="right-now-title">RIGHT NOW</p>
+            <span>Visible to {audienceLabel.toLowerCase()}</span>
           </div>
-        ))}
-        <p className="preview-truth">PRIVATE BROWSER DRAFT · NOT PUBLISHED</p>
+          <label>
+            <span>Feeling</span>
+            <input value={feeling} onChange={(e) => setFeeling(e.target.value)} maxLength={80} />
+          </label>
+          <label>
+            <span>A note from now</span>
+            <textarea value={note} onChange={(e) => setNote(e.target.value)} maxLength={180} rows={2} />
+          </label>
+          <label>
+            <span>Playing</span>
+            <input value={song} onChange={(e) => setSong(e.target.value)} maxLength={160} />
+          </label>
+          <time>Updated just now</time>
+        </section>
+
+        <div className="canvas-placeholders" aria-label="Page sections">
+          <button type="button"><b>＋ Add a photo</b><span>Image tools unlock after signup</span></button>
+          <button type="button"><b>My people</b><span>Invite someone after saving</span></button>
+          <button type="button"><b>Guestbook</b><span>A quiet place for notes</span></button>
+        </div>
+
+        <footer className="canvas-claim">
+          <div><b>{audienceLabel}</b><span>This page is not published.</span></div>
+          <Link className="primary" href="/signup?from=draft">Save my page →</Link>
+        </footer>
       </div>
+      <p className="canvas-help">Every field has a visible label or accessible name. Style never changes reading order, and nothing autoplays.</p>
     </section>
   );
 }

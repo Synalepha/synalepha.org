@@ -2,14 +2,19 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { AppShell } from "@/components/AppShell";
-import { answerFriendRequest, removeFriend } from "@/app/actions";
+import {
+  addToMyPeople,
+  answerFriendRequest,
+  removeFriend,
+  removeFromMyPeople,
+} from "@/app/actions";
 export default async function Friends() {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
-  const [{ data: me }, { data: rows }] = await Promise.all([
+  const [{ data: me }, { data: rows }, { data: chosen }] = await Promise.all([
     supabase
       .from("profiles")
       .select("username,display_name,avatar_url")
@@ -22,6 +27,7 @@ export default async function Friends() {
       )
       .or(`requester_id.eq.${user.id},addressee_id.eq.${user.id}`)
       .order("created_at", { ascending: false }),
+    supabase.from("top_friends").select("friend_id").eq("owner_id", user.id),
   ]);
   const accepted = rows?.filter((r) => r.status === "accepted") || [],
     incoming =
@@ -32,15 +38,17 @@ export default async function Friends() {
       rows?.filter(
         (r) => r.status === "pending" && r.requester_id === user.id,
       ) || [];
+  const chosenIds = new Set((chosen || []).map((row) => row.friend_id));
   return (
     <AppShell
       profile={me || { username: null, display_name: null, avatar_url: null }}
     >
       <div className="directory-page">
-        <p className="eyebrow">FRIENDS</p>
-        <h1>People you chose</h1>
+        <p className="eyebrow">MY PEOPLE</p>
+        <h1>The people you would actually miss</h1>
         <p className="lede">
-          Friendship is mutual here. No followers, no audience-size contest.
+          Connections are mutual. Choose up to eight people to place close to
+          the heart of your page.
         </p>
         {incoming.length > 0 && (
           <section>
@@ -97,6 +105,17 @@ export default async function Friends() {
                       <input type="hidden" name="user_id" value={otherId} />
                       <button>Remove</button>
                     </form>
+                    {chosenIds.has(otherId) ? (
+                      <form action={removeFromMyPeople}>
+                        <input type="hidden" name="user_id" value={otherId} />
+                        <button>Remove from My People</button>
+                      </form>
+                    ) : (
+                      <form action={addToMyPeople}>
+                        <input type="hidden" name="user_id" value={otherId} />
+                        <button>Add to My People</button>
+                      </form>
+                    )}
                   </div>
                 </article>
               );
