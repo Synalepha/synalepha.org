@@ -126,30 +126,21 @@ select {
   padding: 72px max(6vw, 24px);
   overflow: hidden;
   background:
-    radial-gradient(
-      circle at 13% 8%,
-      rgba(50, 217, 255, 0.18),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at 88% 15%,
-      rgba(124, 92, 255, 0.24),
-      transparent 27%
-    ),
-    linear-gradient(120deg, transparent 65%, rgba(255, 79, 163, 0.1) 65%),
+    radial-gradient(circle at 83% 18%, rgba(231, 200, 78, .28), transparent 18%),
+    radial-gradient(circle at 10% 85%, rgba(104, 79, 211, .12), transparent 22%),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(23, 21, 34, .035) 27px 28px),
     var(--paper);
   position: relative;
 }
 .hero:after {
   content: "";
   position: absolute;
-  inset: 58% 0 0;
-  background-image:
-    linear-gradient(rgba(124, 92, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 92, 255, 0.1) 1px, transparent 1px);
-  background-size: 42px 42px;
-  transform: perspective(260px) rotateX(56deg) scale(1.2);
-  transform-origin: bottom;
+  width: 170px;
+  height: 42px;
+  inset: auto auto 12% 42%;
+  background: rgba(231, 200, 78, .48);
+  transform: rotate(-5deg);
+  box-shadow: 0 1px 0 rgba(23, 21, 34, .12);
   pointer-events: none;
 }
 .hero > * {
@@ -167,7 +158,7 @@ select {
   font-family: Georgia, serif;
   font-weight: 400;
   color: var(--violet);
-  text-shadow: 3px 3px 0 rgba(50, 217, 255, 0.38);
+  text-shadow: 3px 3px 0 rgba(231, 200, 78, .46);
 }
 .hero-actions {
   display: flex;
@@ -200,12 +191,10 @@ select {
   background: var(--panel);
   border: 2px solid var(--line);
   box-shadow: 14px 14px 0 var(--violet);
-  transform: rotate(1deg);
+  transform: rotate(.65deg);
 }
 .synth-card {
-  box-shadow:
-    0 0 0 5px rgba(50, 217, 255, 0.13),
-    15px 15px 0 var(--violet);
+  box-shadow: 15px 15px 0 var(--violet), 22px 22px 0 rgba(23, 21, 34, .13);
 }
 .windowbar {
   height: 38px;
@@ -356,7 +345,7 @@ select {
   font: 11px DM Mono;
 }
 .ticker span:nth-child(even) {
-  color: var(--cyan);
+  color: var(--acid);
 }
 .features {
   padding: 110px max(6vw, 24px);
@@ -2843,7 +2832,7 @@ footer small {
   font-size: clamp(95px, 14vw, 190px);
   font-weight: 900;
   line-height: .7;
-  letter-spacing: -12px;
+  letter-spacing: -7px;
 }
 .memory-body h3 { margin: 14px 0 25px; font: clamp(28px, 4vw, 50px)/1.05 Georgia, serif; letter-spacing: -2px; }
 .memory-body blockquote {

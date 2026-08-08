@@ -56,9 +56,9 @@ export function TryPageBuilder() {
     <section className="canvas-builder" id="try-builder">
       <header className="canvas-intro">
         <div>
-          <p className="eyebrow">TOUCH IT. MAKE IT YOURS.</p>
-          <h2>Your first page is already here.</h2>
-          <p>Edit the page. It stays private.</p>
+          <p className="eyebrow">DON&apos;T DESCRIBE YOURSELF. LEAVE CLUES.</p>
+          <h2>Put something true on the wall.</h2>
+          <p>Touch anything. This draft belongs only to this browser.</p>
         </div>
         <div className="canvas-save" role="status" aria-live="polite">
           {saved ? "Private draft saved" : "Private browser draft"}
@@ -66,7 +66,7 @@ export function TryPageBuilder() {
       </header>
 
       <div className="canvas-tools" aria-label="Page style">
-        <span>Choose a room</span>
+        <span>Change the light</span>
         <div>
           {Object.entries(themes).map(([key, value]) => (
             <button
@@ -110,7 +110,7 @@ export function TryPageBuilder() {
           </label>
         </section>
 
-        <p className="canvas-handwritten" aria-hidden="true">made by a person, not assembled by a feed</p>
+        <p className="canvas-handwritten" aria-hidden="true">the mess is part of it</p>
 
         <section className="right-now" aria-labelledby="right-now-title">
           <div>
@@ -135,7 +135,7 @@ export function TryPageBuilder() {
 
         <footer className="canvas-claim">
           <div><b>{audienceLabel}</b><span>This page is not published.</span></div>
-          <Link className="primary" href="/signup?from=draft">Save my page →</Link>
+          <Link className="primary" href="/signup?from=draft">Keep this room →</Link>
         </footer>
       </div>
     </section>

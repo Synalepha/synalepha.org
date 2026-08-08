@@ -33,25 +33,26 @@ export default function Landing() {
       <main id="main-content">
         <section className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">YOUR PAGE · YOUR PEOPLE</p>
+            <p className="eyebrow">A QUIET PLACE THAT SOUNDS LIKE YOU</p>
             <h1>
-              Your internet should
+              Leave something
               <br />
-              feel like <em>you.</em>
+              of <em>yourself.</em>
             </h1>
             <p className="lede">
-              Songs. Scraps. Moods. Your people. Life in order.
+              A song for the drive home. The blurry photo you kept.
+              A sentence meant for four people, not four thousand.
             </p>
             <div className="hero-actions">
               <Link className="primary" href="/signup">
-                Make my page
+                Make a room
               </Link>
               <Link className="secondary" href="/u/maya">
                 See Maya&apos;s page →
               </Link>
             </div>
             <p className="micro">
-              Free · 13+ · Under-18 starts private
+              Yours first. Private first.
             </p>
           </div>
           <div className="hero-proof">
@@ -66,27 +67,27 @@ export default function Landing() {
                 <div>
                   <h2>MAYA ☻</h2>
                   <p>Chicago</p>
-                  <span className="mood">mood: electric</span>
+                  <span className="mood">still awake</span>
                 </div>
               </div>
               <div className="now-playing">
                 <span>▶</span>
                 <div>
-                  <small>PROFILE SONG</small>
+                  <small>FOR THE DRIVE HOME</small>
                   <b>Midnight Receiver — Neon Exit</b>
                 </div>
                 <i>no autoplay</i>
               </div>
               <div className="profile-blurb">
-                <b>ABOUT ME</b>
+                <b>THE SHORT VERSION</b>
                 <p>
-                  designer · night owl · camera collector
+                  camera collector · calls instead of texts
                 </p>
               </div>
               <div className="top-eight">
                 <div>
-                  <b>THE PEOPLE I CALL</b>
-                  <span>not an audience</span>
+                  <b>THE PEOPLE WHO GET IT</b>
+                  <span>four is enough</span>
                 </div>
                 <div className="faces">
                   {people.map(([name, letter]) => (
@@ -105,54 +106,54 @@ export default function Landing() {
           </div>
         </section>
         <section className="ticker" aria-label="Product values">
-          <span>✦ PERSONAL PAGES</span>
-          <span>✦ CHRONOLOGICAL UPDATES</span>
-          <span>✦ MUTUAL FRIENDS</span>
-          <span>✦ PROFILE SONGS</span>
-          <span>✦ NO FOLLOWER CONTEST</span>
+          <span>✦ KEEP THE BLURRY ONES</span>
+          <span>✦ WRITE TO SOMEONE</span>
+          <span>✦ PLAY THIS LAST</span>
+          <span>✦ CHANGE YOUR MIND</span>
+          <span>✦ FOUR PEOPLE CAN BE ENOUGH</span>
         </section>
         <TryPageBuilder />
         <TimeCapsule />
         <section id="how" className="features">
-          <p className="eyebrow">PEOPLE, NOT AUDIENCES</p>
-          <h2>Small enough to mean something.</h2>
+          <p className="eyebrow">NO PERFORMANCE REQUIRED</p>
+          <h2>Small enough to be honest.</h2>
           <div className="feature-grid">
             <article>
               <span>01</span>
-              <h3>Make it unmistakably yours.</h3>
+              <h3>Leave fingerprints.</h3>
               <p>
-                Songs, notes, moods, blurry photos. Change when you do.
+                Move things. Cross things out. Keep the photo that moved.
               </p>
             </article>
             <article>
               <span>02</span>
-              <h3>Keep friendship mutual.</h3>
+              <h3>Choose the room.</h3>
               <p>
-                The names you would notice missing. Both people say yes.
+                Only you. Your people. Or the open door. Object by object.
               </p>
             </article>
             <article>
               <span>03</span>
-              <h3>See what happened.</h3>
+              <h3>Let time stay put.</h3>
               <p>
-                Friday night stays before Saturday morning.
+                Friday night stays before Saturday morning. Nothing races.
               </p>
             </article>
           </div>
         </section>
         <section id="principles" className="safety">
           <div>
-            <p className="eyebrow">CONTROL SHOULD NEVER BE HIDDEN</p>
+            <p className="eyebrow">THE DOOR HAS A LOCK</p>
             <h2>
-              Private when it matters.
+              Close means closed.
               <br />
-              Clear when it counts.
+              You hold the key.
             </h2>
           </div>
           <div>
             <p>
-              Under-18 starts private. You choose who finds, messages, or
-              writes to you.
+              Every photo, note, and song says who can see it. Under-18
+              pages begin with the door closed.
             </p>
             <div className="trust-links">
               <Link href="/safety">See every safety control →</Link>
@@ -160,10 +161,10 @@ export default function Landing() {
           </div>
         </section>
         <section className="closing-cta" aria-labelledby="closing-title">
-          <p className="eyebrow">YOUR PAGE IS WAITING</p>
-          <h2 id="closing-title">Something online can be yours again.</h2>
+          <p className="eyebrow">LEAVE THE LIGHT ON</p>
+          <h2 id="closing-title">Make a place someone remembers.</h2>
           <p>
-            A song playing. A note on the wall. People who knock.
+            Not for everyone. For the right ones.
           </p>
           <Link className="primary" href="/signup">
             Make my Roomtone
