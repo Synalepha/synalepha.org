@@ -19,8 +19,19 @@ export function AuthForm({
   return (
     <form action={formAction} className="auth-form">
       <label>
-        Where should we save your page?
-        <input name="email" type="email" required autoComplete="email" />
+        Your email address{" "}
+        <span className="field-hint">
+          {mode === "login"
+            ? "The email you used to save your page."
+            : "We use this to save your work and let you back in. It will not appear on your page."}
+        </span>
+        <input
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="you@example.com"
+        />
       </label>
       {mode === "signup" && (
         <label>
