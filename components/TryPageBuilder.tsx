@@ -57,7 +57,7 @@ export function TryPageBuilder() {
         <div>
           <p className="eyebrow">TOUCH IT. MAKE IT YOURS.</p>
           <h2>Your first page is already here.</h2>
-          <p>Tap the words and change them. Nothing is published until you decide.</p>
+          <p>Edit the page. It stays private.</p>
         </div>
         <div className="canvas-save" role="status" aria-live="polite">
           {saved ? "Private draft saved" : "Private browser draft"}
@@ -65,7 +65,7 @@ export function TryPageBuilder() {
       </header>
 
       <div className="canvas-tools" aria-label="Page style">
-        <span>Choose the room your page lives in</span>
+        <span>Choose a room</span>
         <div>
           {Object.entries(themes).map(([key, value]) => (
             <button
@@ -132,9 +132,9 @@ export function TryPageBuilder() {
         </section>
 
         <div className="canvas-placeholders" aria-label="Page sections">
-          <button type="button"><b>＋ Add a photo</b><span>Image tools unlock after signup</span></button>
-          <button type="button"><b>My people</b><span>Invite someone after saving</span></button>
-          <button type="button"><b>Guestbook</b><span>A quiet place for notes</span></button>
+          <button type="button"><b>＋ Photo</b><span>After signup</span></button>
+          <button type="button"><b>My people</b><span>Invite after saving</span></button>
+          <button type="button"><b>Guestbook</b><span>Notes from friends</span></button>
         </div>
 
         <footer className="canvas-claim">
@@ -142,7 +142,6 @@ export function TryPageBuilder() {
           <Link className="primary" href="/signup?from=draft">Save my page →</Link>
         </footer>
       </div>
-      <p className="canvas-help">Every field has a visible label or accessible name. Style never changes reading order, and nothing autoplays.</p>
     </section>
   );
 }

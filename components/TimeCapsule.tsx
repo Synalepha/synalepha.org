@@ -8,7 +8,6 @@ const memories = [
     label: "The away message",
     title: "You wrote one sentence and hoped the right person saw it.",
     note: "out getting fries. leave something good.",
-    detail: "No reach strategy. No performance dashboard. Just a small light left on for someone.",
     track: "♫ track 04 · the one you never skipped",
   },
   {
@@ -16,7 +15,6 @@ const memories = [
     label: "The burned CD",
     title: "Twelve songs could say what you could not.",
     note: "FOR THE DRIVE HOME — do not shuffle",
-    detail: "You chose the order, wrote the title by hand, and gave the whole thing to one person.",
     track: "74:12 · written in permanent marker",
   },
   {
@@ -24,7 +22,6 @@ const memories = [
     label: "The photo booth strip",
     title: "The blurry picture was often the one you kept.",
     note: "last train. wet shoes. worth it.",
-    detail: "It did not need to be optimized. It only needed to bring the night back when you found it later.",
     track: "4 photos · one impossible expression",
   },
 ] as const;
@@ -62,8 +59,7 @@ export function TimeCapsule() {
     <section className={`time-capsule capsule-${active}`} aria-labelledby="capsule-title">
       <div className="capsule-copy">
         <p className="eyebrow">BEFORE EVERYTHING BECAME CONTENT</p>
-        <h2 id="capsule-title">The internet had rooms.<br />You remember the feeling.</h2>
-        <p>Not because it was perfect. Because it was smaller, stranger, and made by people who left fingerprints.</p>
+        <h2 id="capsule-title">The internet had rooms.</h2>
         <div className="capsule-tabs" role="tablist" aria-label="Choose a memory">
           {memories.map((item, index) => (
             <button key={item.year} role="tab" aria-selected={active === index} onClick={() => { setActive(index); setHeard(false); }}>
@@ -80,17 +76,16 @@ export function TimeCapsule() {
           <p className="eyebrow">{memory.label}</p>
           <h3>{memory.title}</h3>
           <blockquote>{memory.note}</blockquote>
-          <p>{memory.detail}</p>
           <div className="memory-track"><span aria-hidden="true">▰▰▰▱▱</span><b>{memory.track}</b></div>
         </div>
         <div className="memory-actions">
-          <button type="button" onClick={playMemory}>{heard ? "Heard it ✓" : "Hear a tiny memory"}</button>
-          <span>Sound plays only when you ask.</span>
+          <button type="button" onClick={playMemory}>{heard ? "Heard it ✓" : "Play the memory"}</button>
+          <span>No autoplay.</span>
         </div>
       </article>
 
       <footer>
-        <p>LoudPage is not trying to rewind the web. It is bringing back the part where a page felt like a person.</p>
+        <p>A page should feel like a person.</p>
         <Link href="#try-builder">Leave your fingerprints →</Link>
       </footer>
     </section>
